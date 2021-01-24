@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #image {
+            background: url(img/背景模糊/apic28084.jpg) no-repeat;
+            background-size: 100%;
+            width: 100%;
+            height: 100vh;
+            -webkit-filter: blur(10px);
+            -moz-filter: blur(10px);
+            -ms-filter: blur(10px);
+            filter: blur(10px);
+            z-index: -1;
+        }
+        #box {
+            margin: 30px auto;
+            padding: 20px;
+            width: 500px;
+            background-color: #304ffe;
+            box-shadow: 10px 10px 30px rgb(0, 0, 0, 0.4);
+            border-radius: 10px;
+            position: absolute;
+            transition: .3s;
+            left: 30%;
+            top: 20px;
+        }
+
+        #box1 {
+            margin: 30px auto;
+            padding: 20px;
+            width: 500px;
+            background-color: #304ffe;
+            box-shadow: 10px 10px 30px rgb(0, 0, 0, 0.4);
+            border-radius: 10px;
+            position: absolute;
+            left: 200px;
+            transition: .3s;
+        }
+
+        #box p,
+        #box1 p {
+            font-weight: 600;
+            color: #fff;
+            transition: .3s;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="content">
+        <div id="image"></div>
+        <div id="box">
+            <p></p>
+        </div>
+    </div>
+    <script>
+        var contects = document.getElementsByTagName("p")[0];
+        var dex = "《白鹿原》以白嘉轩为叙事核心，白鹿两家矛盾纠葛组织情节，" +
+            "以反映白嘉轩所代表的宗法家族制度及儒家伦理道德，在时代变迁与政治运" +
+            "动中的坚守与颓败为叙事线索，讲述了白鹿原村里两大家族白家和鹿家之间的" +
+            "故事。白家人沿袭村子里的族长，主人公白嘉轩一生娶过七个妻子，最后一个陪" +
+            "他终生，并育有三儿一女（白孝文、白孝武、白孝义、白灵）。鹿三是白家的长工，" +
+            "黑娃是他的长子。鹿家以鹿子霖为代表，他有两个儿子（鹿兆鹏、鹿兆海）。小说主要" +
+            "讲述了他们的下一代白孝文、鹿兆海、黑娃这一代人的生活：白家后代中规中矩，黑娃却" +
+            "从小就显现出不安分。长大后，白孝文继任族长，黑娃在外做长工，认识了东家的小老婆田小" +
+            "娥，他将她带回村后，受到村人的排斥。黑娃离开村子后投奔革命军，又成为土匪。在此期间鹿子" +
+            "霖、白孝文等都吸上了鸦片，将家败光，去异乡谋生。鹿三以儿媳田小娥为耻，最终杀了她，因终日" +
+            "被田小娥死时的情形折磨而死去。白孝文则在外重新振作，终有一番作为，白灵加入了共产党。一个家" +
+            "庭两代子孙，为争夺白鹿原的统治代代争斗不已。";
+        var text = dex.split("")
+        var index = 0;
+        // var box1 = document.createElement("div");
+        // var p = document.createElement("p");
+        // box1.append(p);
+        // box1.id = "box1";
+        // document.getElementById('image').append(box1);
+        // box1.style.display = "none";
+        // var ap = box1.childNodes[0];
+        var timer = setInterval(function () {
+            (index < dex.length) && (contects.innerHTML += text[index]);
+            (index == dex.length) && clearInterval(timer)
+            index++; 
+            // if (index == 439) {
+            //     box1.style.display = "block";
+            //     ap.innerHTML = text.join("");
+            // }
+        }, 200)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0 auto;
+				padding: 0;
+			}
+			body{
+				background: #000000;
+				text-align: center;
+			}
+			#box{
+				width: 492px;
+				height: 172px;
+				background: white;
+				margin: 10px auto;
+				border: 8px solid #fff;
+				overflow: hidden;
+				border-radius:10px ;
+				position: relative;
+			}
+			ul{
+				list-style: none;
+				padding: 0;
+				}
+			#box ul li img{
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			#box #number{
+				position: absolute;
+				right: 0;
+				bottom: 5px;
+			}
+			#box  #number li{
+				z-index: 10; 
+				width: 20px;
+				height: 20px;
+				border-radius: 50%;
+				background: #f90;
+				float: left;
+				font: 12px/20px arial;
+				margin-right: 5px;
+				cursor: pointer;
+				overflow: hidden;
+			}
+			#box  #number li a{
+				color: #FFFFFF;
+				text-decoration: none;
+			}
+			#box #number .current{
+				background: #f60;
+			}
+		</style>
+		<script>
+			window.onload=function(){
+				var box=document.getElementById('box');
+				var Nber=document.getElementById('number');
+				var first=document.getElementById('first');
+				var bnner=first.getElementsByTagName('li');
+				var change=Nber.getElementsByTagName('li');
+				var index=i=0;
+				var timer=null;
+				box.onmouseover=function(){
+					clearInterval(timer);
+				};
+				box.onmouseout=function(){
+					autoPlay();
+				};
+				for(var i=0;i<change.length;i++){
+					change[i].index=i;
+					change[i].onmouseover=function(){
+						show(this.index)
+					}
+				}
+				function autoPlay(){
+			    timer=setInterval(function(){
+					index++;
+					index>=bnner.length&&(index=0)
+					show(index)
+				},2000);
+				}
+				autoPlay();
+				function show(a){
+					for(var i=0;i<bnner.length;i++){
+						for(var j=0;j<bnner.length;j++){change[j].className="";}
+						change[a].className="current";
+						for(var n=0;n<bnner.length;n++)bnner[n].style.opacity=0;
+						bnner[a].style.opacity=1;
+				}
+			};
+				
+		}
+		</script>
+	</head>
+	<body><!---->
+		<div id="box"><!---->
+			<ul id="first"><!---->
+				<li style="opacity: 0;"><img src="img/自动播放——幻灯片效果_files/01.jpg"/ ></li>
+				<li style="opacity: 0;"><img src="img/自动播放——幻灯片效果_files/02.jpg"/ ></li>
+				<li style="opacity: 0;"><img src="img/自动播放——幻灯片效果_files/03.jpg"/ ></li>
+				<li style="opacity: 0.6;"><img src="img/自动播放——幻灯片效果_files/04.jpg"/ ></li>
+				<li style="opacity: 0;"><img src="img/自动播放——幻灯片效果_files/05.jpg"/ ></li>
+			</ul>
+			<ul id="number"><!---->
+				<li class=""><a href="javascripy:;">1</a></li>
+				<li class=""><a href="javascripy:;">2</a></li>
+				<li class=""><a href="javascripy:;">3</a></li>
+				<li class="curren"><a href="javascripy:;">4</a></li>
+				<li class=""><a href="javascripy:;">5</a></li>
+			</ul>
+		</div>
+	</body>
+</html>

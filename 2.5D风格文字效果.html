@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgb(219, 219, 228);
+        }
+        .text{
+            font-size: 10em;
+            font-weight: 900;
+            color: #fff;
+            transform: rotate(-25deg) skew(25deg);
+        }
+        .text::before{
+            content: "";
+            position: absolute;
+            color:rgb(0,0,0,0.6);
+            filter: blur(20px);
+            z-index: -1;
+            left: -30px;
+            top: 30px;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var total=30;
+            var shadow='';
+            for(var i=1;i<=total;i++){
+                shadow+='-'+i+'px '+i+'px 0 #eee,';
+            }
+            shadow=shadow.slice(0,-1);
+            console.log(shadow);
+            var  text=document.querySelector('.text');
+            text.style.textShadow=shadow;
+        }
+    </script>
+</head>
+<body>
+    <div class="text">
+        <p>陈黎明</p>
+    </div>
+</body>
+</html>

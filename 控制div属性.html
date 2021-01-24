@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			*{
+				margin: 0 auto;
+				padding: 0;
+			}	
+			#box{
+				width: 500px;
+				text-align: center;
+			}
+			.box{
+				width: 100px;
+				height: 100px;
+				background-color: black;
+				display: block;
+				margin: 10px auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+				<input type="button" value="变宽" id="width"/>
+				<input type="button" value="变高" id="height"/>
+				<input type="button" value="变色" id="color"/>
+				<input type="button" value="隐藏" id="hidden"/>
+				<input type="button" value="重置" id="reset"/>
+			<div class="box"></div>
+		</div>
+		<script>
+			var aInput=document.getElementsByTagName("input");
+			aInput[0].onclick=function(){
+				document.querySelector('.box').style.width='200px';
+			};
+		    aInput[1].onclick=function(){
+		    	document.querySelector('.box').style.height='200px'
+		    }
+			color=document.getElementById('color').onclick=function(){
+				document.querySelector('.box').style.backgroundColor='red';
+			};
+			hidden=document.getElementById("hidden").onclick=function(){
+				document.querySelector('.box').style.display='none';
+			};
+			document.getElementById('reset').onclick=function(){
+				document.querySelector('.box').style.width='100px';
+				document.querySelector('.box').style.height='100px';
+				document.querySelector('.box').style.backgroundColor='black';
+				document.querySelector('.box').style.display='block';
+			};
+		</script>
+	</body>
+</html>

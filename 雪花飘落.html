@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>雪花</title>
+		<style type="text/css">
+			body,html{
+				background: url(img/雪花飘落/apic13131.jpg)no-repeat;
+				background-size:cover ;
+				overflow: hidden;
+				margin: 0 auto;
+				padding: 0;
+			}
+			.snow{
+				position: absolute;
+				width: 20px;
+				height: 20px;
+				background-color: white;
+				border-radius:50%;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<script>
+			var windowHeight=window.screen.height;
+			var windowWidth=window.screen.width;
+			function creatSnow(){
+				var left=0;
+			    var top=0;
+				var div=document.createElement('div');
+				div.className="snow";
+				var randomleft=Math.random()*windowWidth;
+				var randomtop=Math.random()*windowHeight;
+				div.style.transform="scale("+Math.random()+")"
+				document.body.appendChild(div);
+				setInterval(function(){
+					div.style.left=randomleft+left+"px";
+					div.style.top=randomtop+top+"px";
+					left+=0.2;
+					top+=0.2;
+					if(randomleft+left>=windowWidth){
+						randomleft=Math.random();
+						left=0;
+					}
+					if(randomtop+top>=windowHeight){
+						randomtop=Math.random();
+						top=0;
+					}
+				},10)
+			}
+			for(var i=0;i<200;i++){
+				creatSnow();
+			}
+		</script>
+	</body>
+</html>

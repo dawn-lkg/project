@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body,html{
+				height: 100%;
+			}
+			#box{
+				width: 260px;
+				height: 100%;
+				background-color: #363a45;
+				color: #fff;
+			}
+			#box-1{
+				width: 100%;
+				height: 65px;
+				background-color: #44495a;
+				font-size: 24px;
+				color: #fff;
+				text-align: center;
+				line-height: 65px;
+			}
+			#nav{
+				width: 250px;
+				margin: 10px 5px 0;
+			}
+			#nav h2{
+				background: #3889d4;
+				font-size: 16px;
+				height: 50px;
+				line-height: 20px;
+				transition: .5s;
+				margin-bottom: 5px;
+			}
+			#nav h2 span{
+				width: 0;
+				height: 0;
+				display: block;
+				border: 8px solid transparent;
+				border-left-color:#fff ;
+				position: relative;
+				left: 224px;
+				top:16px;
+				transform-origin: 1px 8px;
+				transition: .5s;
+			}
+			 
+			#nav ul{
+				transition: .5s;
+				overflow: hidden;
+			}
+			li{
+				font-size: 15px;
+				line-height: 40px;
+				font-weight: bold;
+			}
+			.on{
+				transform: rotate(90deg);
+			}
+		</style>
+		<script>
+			window.onload=function(){
+				var aH2=document.getElementsByTagName('h2');
+				var ul=document.getElementsByTagName('ul');
+				var aspan=document.getElementsByTagName('span');
+				var drag=[];
+				for(var k=0;k<aH2.length;k++){
+					drag[k]=true;
+				}
+				for(var i=0;i<aH2.length;i++){
+					aH2[i].index=i;
+					aH2[i].onclick=function(){
+						if(drag[this.index]){
+							for(var n=0;n<ul.length;n++){
+								ul[n].style.height="0";
+								aH2[n].style.background="#3889D4";
+								aspan[n].className="";
+								drag[n]=true
+							}
+							ul[this.index].style.height="240px";
+							this.style.background="#393c4a";
+							aspan[this.index].className="on";
+							drag[this.index]=false;
+						}else{
+							ul[this.index].style.height="0";
+							this.style.background="#3889D4";
+							aspan[this.index].className="";
+							drag[this.index]=true;
+						}
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			<div id="box-1">国内各个景点</h1>
+			<div id="nav">
+				<h2><span class=""></span>北京景点</h2>
+			<ul style="height: 0;">
+				<li>故宫</li>
+				<li>圆明园</li>
+				<li>天坛</li>
+				<li>长城</li>
+				<li>天安门</li>
+				<li>雍和宫</li>
+			</ul>
+			<h2><span class=""></span>南京景点</h2>
+			<ul style="height: 0;">
+				<li>夫子庙</li>
+				<li>南京总统府</li>
+				<li>明孝陵</li>
+				<li>长江大桥</li>
+				<li>南京博物馆</li>
+				<li>雨花台</li>
+			</ul>
+			<h2><span class=""></span>西安景点</h2>
+			<ul style="height: 0;">
+				<li>钟楼</li>
+				<li>秦皇陵</li>
+				<li>华清池</li>
+				<li>大唐芙蓉园</li>
+				<li>秦岭野生动物园</li>
+				<li>樱花广场</li>
+			</ul>
+			<h2><span class=""></span>重庆景点</h2>
+			<ul style="height: 0;">
+				<li>洪崖洞</li>
+				<li>丰都鬼城</li>
+				<li>金刀峡</li>
+				<li>重庆仙女山</li>
+				<li>白公馆</li>
+				<li>三峡博物馆</li>
+			</ul>
+			<h2><span class=""></span>湖北景点</h2>
+			<ul style="height: 0;">
+				<li>黄鹤楼</li>
+				<li>神农架生态旅游区</li>
+				<li>武当山</li>
+				<li>武汉东湖</li>
+				<li>古隆中</li>
+				<li>大别山</li>
+			</ul>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>购物车</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        text-decoration: none;
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+      }
+
+      #shopping {
+        margin: 20px auto;
+        width: 600px;
+      }
+
+      table {
+        border-collapse: collapse;
+        background-color: #fff;
+      }
+      table,
+      table th,
+      table tr td {
+        border: 1px solid #000;
+      }
+
+      table tr th,
+      table tr td {
+        text-align: center;
+        padding: 5px;
+      }
+
+      .btn1 {
+        float: left;
+      }
+
+      .btn2 {
+        float: right;
+      }
+
+      .btn1,
+      .btn2 {
+        height: 100%;
+        width: 30%;
+        border: none;
+      }
+
+      #oveity {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        margin: 0;
+        background-color: #888;
+      }
+
+      #windw {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 400px;
+        height: 200px;
+        background: #ffffff;
+        border: 4px solid #f90;
+        margin: -102px 0 0 -202px;
+      }
+
+      #windw h2 {
+        font-size: 12px;
+        text-align: right;
+        background: #fc0;
+        border-bottom: 3px solid #f90;
+      }
+
+      .close {
+        color: #ff9900;
+        cursor: pointer;
+        background: #fff;
+        border: 1px solid #ff9900;
+        padding: 0 2px;
+      }
+
+      #message1,
+      #message2 {
+        position: absolute;
+        left: 18%;
+      }
+
+      #message1 {
+        top: 35%;
+      }
+
+      #message2 {
+        top: 55%;
+      }
+
+      #btn {
+        position: absolute;
+        left: 48%;
+        top: 75%;
+        padding: 5px 10x;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="shopping">
+      <table border="1" cellspacing="0">
+        <tr>
+          <th>商品序号</th>
+          <th>
+            <input
+              type="checkbox"
+              v-model="allcheck"
+              @click="allcheckbox()"
+            /><span>全选</span>
+          </th>
+          <th>商品名称</th>
+          <th>商品单价</th>
+          <th>购买数量</th>
+          <th>商品小计</th>
+          <th>删除商品</th>
+        </tr>
+        <tr v-for="(item,index) in language">
+          <td>{{index}}</td>
+          <td>
+            <input
+              type="checkbox"
+              v-model="item.checked"
+              @change="checkedone()"
+            />
+          </td>
+          <td>{{item.name}}</td>
+          <td>{{item.price}}</td>
+          <td>
+            <button @click="subract(index)" class="btn1">-</button>
+            {{item.num}}
+            <button @click="plus(index)" class="btn2">+</button>
+          </td>
+          <td>{{item.total}}</td>
+          <td @click="Delete(index)"><a href="javascript:void(0);">删除</a></td>
+        </tr>
+        <tr>
+          <td @click="vieity()" colspan="2">添加商品</td>
+          <td>总计：</td>
+          <td colspan="2">{{alltotal}}</td>
+          <td colspan="2" @click="Settleaccounts()">结算</td>
+        </tr>
+      </table>
+      <div id="oveity" v-show="deg">
+        <div id="windw">
+          <h2><span class="close" @click="vieity">×</span></h2>
+          <p id="message1">
+            <label>添加商品：</label
+            ><input type="text" v-model="message" @keyup.enter="app()" />
+          </p>
+          <p id="message2">
+            <label>添加价格：</label
+            ><input type="text" v-model="message_1" @keyup.enter="app()" />
+          </p>
+          <button id="btn" @click="app()">添加</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/vue.min.js"></script>
+    <script>
+      window.onload = function () {
+        var shop = new Vue({
+          el: "#shopping",
+          data: {
+            allcheck: false,
+            alltotal: 0,
+            deg: false,
+            message: "",
+            message_1: "",
+            language: [
+              {
+                name: "java",
+                price: 100,
+                num: 0,
+                total: 0,
+                checked: false,
+              },
+              {
+                name: "Python",
+                price: 90,
+                num: 0,
+                total: 0,
+                checked: false,
+              },
+              {
+                name: "javascript",
+                price: 80,
+                num: 0,
+                total: 0,
+                checked: false,
+              },
+              {
+                name: "C++",
+                price: 70,
+                num: 0,
+                total: 0,
+                checked: false,
+              },
+              {
+                name: "C语言",
+                price: 50,
+                num: 0,
+                total: 0,
+                checked: false,
+              },
+            ],
+          },
+          methods: {
+            //全选
+            allcheckbox: function () {
+              this.language.forEach((item) => {
+                if (!this.allcheck) {
+                  item.checked = true;
+                } else {
+                  item.checked = false;
+                }
+                this.Settleaccounts();
+              });
+            },
+            //全被复选框为选中时，全选按钮也为选中状态
+            checkedone: function () {
+              var Num = 0;
+              this.language.forEach((item, i) => {
+                if (item.checked == true) {
+                  Num++;
+                } else {
+                  this.allcheck = false;
+                }
+              });
+              if (Num == this.language.length) {
+                this.allcheck = true;
+              }
+              this.Settleaccounts();
+            },
+            //实现商品数量的减，不能小于0，同时商品小计也会变化，商品小计=商品数量*商品价格
+            subract: function (index) {
+              this.language[index].num > 0 && this.language[index].num--;
+              this.language[index].total =
+                this.language[index].num * this.language[index].price;
+              this.Settleaccounts();
+            },
+            //实现商品数量的加，商品小计也变化，商品小计=商品数量*商品价格
+            plus: function (index) {
+              this.language[index].num++;
+              this.language[index].total =
+                this.language[index].num * this.language[index].price;
+              this.Settleaccounts();
+            },
+            //实现删除的效果
+            Delete: function (index) {
+              this.language.splice(index, 1);
+              this.Settleaccounts();
+            },
+            //监听函数的效果，用于控制总计的值
+            Settleaccounts: function () {
+              var sum = 0;
+              this.language.forEach((item, i) => {
+                if (item.checked == true) {
+                  sum += item.total;
+                }
+                this.alltotal = sum;
+              });
+            },
+            //控制遮罩层的显示隐藏
+            vieity: function () {
+              this.deg = !this.deg;
+            },
+            //判断遮罩层的输入框内容是否为空，不为空则添加一行
+            app: function () {
+              if (this.message != "" && this.message_1 != "") {
+                this.language.push({
+                  name: this.message,
+                  price: this.message_1,
+                  num: 0,
+                  total: 0,
+                  checked: false,
+                });
+                this.message = "";
+                this.message_1 = "";
+                this.vieity();
+              }
+            },
+          },
+        });
+      };
+    </script>
+  </body>
+</html>

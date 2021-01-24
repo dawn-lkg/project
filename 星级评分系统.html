@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0 auto;
+				padding: 0;
+			}
+			body{
+				color: #666;
+				font: 12px/1.5 arial;
+				
+			}
+			#star{
+				position: relative;
+				width: 600px;
+				margin: 10px auto;
+			}
+			#star span{float: left;}
+			#star li{
+				float: left;
+				width: 24px;
+				cursor: pointer;
+				list-style-type: none;
+			}
+			#star p em{
+				color: #FF6600;
+				display: block;
+			}
+			#star strong{
+				color: #FF6600;
+				padding-left: 10px;
+			}
+			#star p{
+				position: absolute;
+				top: 20px;
+				width: 159px;
+				height: 60px;
+			}
+		</style>
+		<script>
+			window.onload=function(){
+				var aImg=document.getElementsByTagName('img');
+				var p=document.getElementsByTagName('p')[0];
+				var em=document.getElementsByTagName('em')[0];
+				var aspan=document.getElementsByTagName('span')[1];
+				var arrt=[
+				"很不满意|差得太离谱，与卖家描述的严重不符，非常不满",
+				"不满意|部分有破损，与卖家描述的不符，不满意",
+				"一般|质量一般，没有卖家描述的那么好",
+				"满意|质量不错，与卖家描述的基本一致，还是挺满意的",
+				"非常满意|质量非常好，与卖家描述的完全一致，非常满意"
+				]
+				for(var i=0;i<aImg.length;i++){
+					aImg[i].index=i
+					aImg[i].onclick=function(){
+						for(var j=0;j<=this.index;j++){
+							for(var n=aImg.length-1;j<n;n--){
+								aImg[n].src="img/星级评分系统/startnull.png";
+							}
+							aImg[j].src="img/星级评分系统/start.png";
+							p.style.display="none";
+							aspan.innerHTML="<strong>"+(this.index+1)+"分"+"</strong>("+arrt[this.index].match(/\|(.+)/)[1]+")";
+						}						
+					}
+					aImg[i].onmouseover=function(){
+						p.style.display='block';
+						p.style.left=(this.index+1)*24+"px";
+						p.innerHTML="<em>"+(this.index+1)+"分"+arrt[this.index].match(/(.+)\|/)[1]+"</em>"+arrt[this.index].match(/\|(.+)/)[1];
+					}
+					aImg[i].onmouseout=function(){
+						p.style.display='none';
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="star">
+			<span>点击星星就能打分</span>
+			<ul>
+				<li><a href="javascript:;"><img src="img/星级评分系统/startnull.png" width="25px" height="25px"/></a></li>
+				<li><a href="javascript:;"><img src="img/星级评分系统/startnull.png" width="25px" height="25px"/></a></li>
+				<li><a href="javascript:;"><img src="img/星级评分系统/startnull.png" width="25px" height="25px"/></a></li>
+				<li><a href="javascript:;"><img src="img/星级评分系统/startnull.png" width="25px" height="25px"/></a></li>
+				<li><a href="javascript:;"><img src="img/星级评分系统/startnull.png" width="25px" height="25px"/></a></li>
+			</ul>
+			<span><strong>5分</strong>（质量非常好，与卖家描述的完全一致，非常满意）</span>
+				<p style="display: none; left: 128px;"><em>5分 非常满意</em> 质量非常好，与卖家描述的完全一致，非常满意</p>
+		</div>
+	</body>
+</html>

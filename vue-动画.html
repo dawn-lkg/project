@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-动画</title>
+    <style>
+        .slide-fade-enter-active {
+            transition: all .3s ease;
+        }
+
+        .slide-fade-leave-active {
+            transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+        }
+
+        .slide-fade-enter,
+        .slide-fade-leave-to {
+            transform: translateX(10px);
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <button @click="change">点击</button>
+        <transition name="slide-fade">
+            <h1 v-show='deg'>显示</h1>
+        </transition>
+    </div>
+    <script src="js/vue.min.js"></script>
+    <script>
+        var demo = new Vue({
+            el: "#box",
+            data: {
+                deg: false
+            },
+            methods: {
+                change: function () {
+                    this.deg = !this.deg;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>骰子</title>
+<style type="text/css">
+*{
+margin:0;
+padding:0;
+}
+#box{
+width:100px;
+height:100px;
+border:1px solid black;
+border-radius:10px;
+margin:200px auto;
+cursor:pointer;
+text-align:center;
+-moz-user-select:none;/*火狐*/
+-webkit-user-select:none;/*webkit浏览器*/
+-ms-user-select:none;/*IE10*/
+-khtml-user-select:none;/*早期浏览器*/
+user-select:none;
+transition:.5s ;
+}
+span{
+font-size:50px;
+line-height:100px;
+}
+</style>
+<script type="text/javascript">
+window.onload=function(){
+var abox=document.getElementById("box");
+var span=document.getElementsByTagName("span")[0];
+abox.onclick=function(){
+if(span.innerHTML==0){
+consolg.log("错误")
+return
+}
+span.innerHTML=Math.ceil(6*Math.random())
+}
+}
+</script>
+</head>
+<body>
+<div id="box">
+<p><span>1</span></p>
+</div>
+</body>
+</html>

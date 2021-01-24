@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div>
+			<h2>提交成功</h2>
+			<a href="https://www.baidu.com">
+				<span id="seconds">3</span>秒后系统会自动跳转，也可单击此链接跳转
+			</a>
+		</div>
+		<script>
+			function timing(secs,url){
+				var seconds=document.getElementById('seconds');
+				seconds.innerHTML=--secs;
+				if(secs>0){
+					setInterval('timing('+secs+',\''+url+'\')',1000)
+				}else{
+					location.href=url;
+				}
+			};
+			timing(3,'https://www.baidu.com');
+		</script>
+	</body>
+</html>

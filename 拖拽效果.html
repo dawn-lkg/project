@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>拖拽效果</title>
+		<style type="text/css">
+			*{
+				margin: 0 auto;
+				padding: 0;
+			}
+			body{
+				background: black;
+				color: #FFFFFF;
+				background: #000000;
+				font: 12px/2 arial;
+				overflow: hidden;
+			}
+			p{
+				padding: 0 10px;
+				margin-top: 10px;
+			}
+			span{
+				color: #ff0;
+				padding-left: 5px;
+			}
+			#box{
+				width: 300px;
+				height: 150px;
+				border: 2px solid #ccc;
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				margin: -75px 0 0 -150px;
+			}
+			#box h2{
+				height: 25px;
+				cursor: move;
+				background: #222;
+				border-bottom: 2px solid #ccc;
+				text-align: right;
+				padding: 0 10px;
+				line-height: 20px;
+			}
+			#box h2 a{
+				color: #FFFFFF;
+				font: 12px/25px arial;
+				text-decoration: none;
+				outline: none;
+			}
+		</style>
+		<script>
+			window.onload=function(){
+				var box=document.getElementById('box');
+				var aH2=box.getElementsByTagName('h2')[0];
+				var aA=aH2.getElementsByTagName('a')[0];
+				var aspan=box.getElementsByTagName('span');
+				var drage=false;
+				var doc=[{x:box.offsetLeft,y:box.offsetTop}];
+				aH2.onmousedown=function(event){
+					var event=event||window.event;
+					drage=true;
+					var disX=event.clientX-box.offsetLeft;
+					var disY=event.clientY-box.offsetTop;
+					doc.push({x:box.offsetLeft,y:box.offsetTop});
+				document.onmousemove=function(event){
+					var event=event||window.event;
+					var maxAx=document.documentElement.clientWidth-box.offsetWidth;
+					var maxAy=document.documentElement.clientHeight-box.offsetHeight;
+					var ax=event.clientX-disX;
+					var ay=event.clientY-disY;
+					ax=ax<0?0:ax;
+					ax=ax>maxAx?maxAx:ax;
+					ay=ay<0?0:ay;
+					ay=ay>maxAy?maxAy:ay;
+					if(drage){
+			        box.style.marginTop=box.style.marginLeft=0;
+					box.style.left=ax+"px";
+					box.style.top=ay+"px";
+					}
+					doc.push({x:ax,y:ay});
+					status();
+				}
+				}
+				document.onmouseup=function(){
+					this.onmousedown=null;
+					document.onmousemove=null;
+					drage=false;
+					status();
+				}
+				aA.onclick=function(){
+					console.log(doc);
+					if(doc.length==1) return;
+					var timer=setInterval(function(){
+						adoc=doc.pop();
+						
+						adoc?(box.style.left=adoc.x+"px",box.style.top=adoc.y+"px"):clearInterval(timer);
+					},30)
+					this.focus=false;
+					return false;
+				}
+//				aH2.onmousedown=function(event){
+//					var event=event||window.event;
+//				    event.cancelable=true;
+//					
+//				}
+				function status(){
+					aspan[0].innerHTML=drage;
+					aspan[1].innerHTML=box.style.left;
+					aspan[2].innerHTML=box.style.top;
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			<h2><a href="javascript:;">点击回放拖动轨迹</a></h2>
+			<p><strong>拖拽：</strong><span>false</span></p>
+		    <p><strong>offsetTop:</strong><span></span></p>
+		    <p><strong>offsetLeft:</strong><span></span></p>
+	</body>
+</html>

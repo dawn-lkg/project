@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue-三级联动</title>
+</head>
+
+<body>
+    <div id="box">
+        <select @change="pric()">
+            <option v-for="(item,i) in province">{{item}}</option>
+        </select>
+        <select @change="ciy()">
+            <option v-for='(item,i) in cityonce'>{{item}}</option>
+        </select>
+        <select>
+            <option v-for="(item,i) in areaonce">{{item}}</option>
+        </select>
+    </div>
+    <script src="js/vue.min.js"></script>
+    <script>
+        var demo = new Vue({
+            el: "#box",
+            data: {
+                province: ['请选择', '湖北', '湖南', '河南'],
+                city: [['武汉市', '襄阳', '宜昌'], ['长沙市', '湘潭市', '株洲'], ['郑州', '商丘', '洛阳']],
+                provinceindex: "",
+                cityindex: "",
+                area: [
+                    [
+                        ['江夏区', '洪山区', '江汉区'],
+                        ['襄城区', '樊城区', '襄州区'],
+                        ['夷陵区', '西陵区', '伍家岗区'],
+                    ],
+                    [
+                        ['芙蓉区', '天心区', '开福区'],
+                        ['雨湖区', '岳塘区', '湘潭县'],
+                        ['天元区', '荷塘区', '芦淞区'],
+                    ],
+                    [
+                        ['中原区', '二七区', '金水区'],
+                        ['睢阳区', '梁园区', '虞城'],
+                        ['西工区', '洛龙区', '老城区'],
+                    ]
+                ],
+                cityonce: "",
+                areaonce: "",
+            },
+            methods: {
+                pric: function () {
+                    this.cityindex = "";
+                    this.provinceindex = "";
+                    this.cityonce="";
+                    this.areaonce="";
+                    this.provinceindex = parseInt(document.getElementsByTagName('select')[0].selectedIndex - 1);
+                    
+                    this.cityonce = this.city[this.provinceindex];
+                },
+                ciy: function () {
+                    this.cityindex = "";
+                    var x = this.provinceindex
+                    this.cityindex = parseInt(document.getElementsByTagName('select')[1].selectedIndex);
+                    console.log(this.cityindex);
+                    this.areaonce = this.area[this.provinceindex][this.cityindex];
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

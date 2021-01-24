@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+				list-style-type: none;
+			}
+			body{
+				background: black;
+			}
+			#box{
+				width: 520px;
+				margin: 30px auto;
+				overflow: hidden;
+				padding: 10px;
+				border: 1px solid #DDDDDD;
+				background: black;
+			}
+			#box ul li{
+				width: 100px;
+				height: 100px;
+				float: left;
+				margin-right: 5px;
+				padding: 2px;
+				box-sizing: border-box;
+			}
+			#box ul li img{
+				width: 100%;
+				height: 100%;
+				border: 2px solid transparent;
+				border-radius: 10px;
+				cursor: pointer;
+			}
+			#box ul li .red{
+				border-color: red;
+			}
+			#outer{
+				width: 100%;
+				height: 400px;
+				border-radius:10px ;
+				overflow: hidden;
+				margin-top: 140px;
+			}
+			#outer img{
+				width: 100%;
+				height: 100%;
+			}
+		</style>
+		<script>
+			window.onload=function(){
+				var ul=document.getElementsByTagName('ul')[0];
+				var outer=document.getElementById('outer');
+				var aImg=ul.getElementsByTagName('img');
+				var box=outer.getElementsByTagName('img')[0];
+				for(var i=0;i<aImg.length;i++){
+					aImg[i].index=i;
+					aImg[i].onclick=function(){
+						for(var n=0;n<aImg.length;n++){
+							aImg[n].className=""
+						}
+						this.className="red";
+						box.src="img/缩略图放大特效/a"+(parseInt(this.index)+1)+".png"
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			<ul style="width: 840px;left: 0;">
+				<li><img src="img/缩略图放大特效/a1.png" class="red"/></li>
+				<li><img src="img/缩略图放大特效/a2.png" class=""/></li>
+				<li><img src="img/缩略图放大特效/a3.png" class=""/></li>
+				<li><img src="img/缩略图放大特效/a4.png"class=""/></li>
+				<li><img src="img/缩略图放大特效/a5.png" class=""/></li>
+			</ul>
+			<div id="outer">
+				<img src="img/缩略图放大特效/a1.png" />
+			</div>
+		</div>
+	</body>
+</html>

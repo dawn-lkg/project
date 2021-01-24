@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				text-align: center;
+				color: white;
+			}
+			#clock{
+				width: 300px;
+				background: #000000;
+				padding: 20px 0;
+				margin: 10px auto;
+			}
+			#clock span{
+				width: 80px;
+				padding: 0 10px;
+				border: 2px solid #b4b4b4;
+				background: #F0F0F0;
+				color: black;
+				margin: 0 10px;
+			}
+		</style>
+		<script>
+			window.onload=function(){
+				var clock=document.getElementById('clock');
+				var Timeout=clock.getElementsByTagName('span');
+				
+				function getTime(){
+				var date=new Date();	
+				var odate=[date.getHours(),date.getMinutes(),date.getSeconds()];	
+				for(var i in Timeout){
+					Timeout[i].innerHTML=odate[i];
+				}
+			}
+				setInterval(getTime,1000);
+		}
+		</script>
+	</head>
+	<body>
+		<div id="clock">
+			<span>00</span>点<span>00</span>分<span>00</span>秒
+		</div>
+	</body>
+</html>

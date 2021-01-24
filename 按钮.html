@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.container{
+				background-color: black;
+				width: 100%;
+				height: 100vh;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-direction: column;
+			}
+			a{
+				position: relative;
+				width: 100px;
+				height: 60px;
+				margin: 40px;
+				text-decoration: none;
+				color: aqua;
+				font-size: 20px;
+				padding: 20px 20px ;
+				text-transform: uppercase;
+				overflow: hidden;
+			}
+			a::before{
+				content: '';
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 20px;
+				height: 20px;
+				border-top: 2px solid aqua;
+				border-left: 2px solid aqua;
+				transition: .5s;
+				transition-delay: .5s;
+			}
+			a::after{
+				content: "";
+				position: absolute;
+				bottom: 0;
+				right: 0;
+				width: 20px;
+				height: 20px;
+				border-bottom: 2px solid aqua;
+				border-right: 2px solid aqua;
+				transition: .5s;
+				transition-delay: .5s;
+			}
+			a:hover::before,a:hover::after{
+				width: 100%;
+				height: 100%;
+				transition-delay: 0s;
+			}
+			a:hover{
+				
+				/*color: #000000;*/
+				box-shadow: 0 0 50px #21EBFF;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<a href="#">button1</a>
+			<a href="#">button2</a>
+			<a href="#">button3</a>
+			<a href="#">button4</a>
+			<a href="#">button5</a>
+		</div>
+	</body>
+</html>

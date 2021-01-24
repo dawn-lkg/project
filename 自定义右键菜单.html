@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0 auto;
+				padding: 0;
+			}
+			body{
+				font: 12px/24px arial;
+			}
+			p{
+				text-align: center;
+				margin: 10px auto;
+			}
+			#meau{
+				width: 100px;
+				list-style: none;
+				border-radius: 3px;
+				border: 1px solid #8f8F8F;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			#meau li{
+				position: relative;
+				height: 24px;
+				vertical-align: top;
+				padding-left: 24px;
+			}
+			#meau li a{
+				display: block;
+				color: #333333;
+				background: #FFFFFF;
+				padding-left: 5px;
+				text-decoration: none;
+			}
+			#meau li em{
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 24px;
+				height: 24px;
+				background: #eaead7;
+			}
+			#meau .hover{
+				background: #999;
+			}
+			#meau .hover a{
+				color: #FFFFFF;
+				background: #8f8f8f;
+			}
+		</style>
+		<script>
+			window.onload=function(){
+				var meau=document.getElementById('meau');
+				var ali=meau.getElementsByTagName('li');
+				for(var i=0;i<ali.length;i++){
+					ali[i].onmouseover=function(){
+						for(var j=0;j<ali.length;j++)ali[j].className="";
+						this.className="hover";
+					}
+				}
+				document.oncontextmenu=function(event){
+					var event=event||window.event;
+					meau.style.display="block";
+					meau.style.left=event.clientX+"px";
+					meau.style.top=event.clientY+"px";
+					return false;
+				}
+				document.onclick=function(){
+					meau.style.display="none";
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<p>自定义菜单右击查看效果</p>
+		<ul id="meau" style="display: none;left: 850px;top: 110px;">
+			<li class=""><em></em><a href="javascript:;">剪切</a></li>
+			<li class=""><em></em><a href="javascript:;">复制</a></li>
+			<li class=""><em></em><a href="javascript:;">粘贴</a></li>
+		</ul>
+	</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>闪烁</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #star {
+            width: 50px;
+            height: 50px;
+            opacity: 1;
+            background-color: black;
+            border-radius: 50%;
+            border: 1px solid black;
+
+            margin: 20px auto;
+        }
+    </style>
+    <script src="js/jQuery.js"></script>
+</head>
+
+<body>
+    <div id="star"></div>
+    <script>
+        $(function(){
+            setInterval(function(){
+                $('#star').animate({
+                    opacity:'0.5',
+                    width:'40px',
+                    height:'40px',
+                    margin:'25px auto'
+                }).animate({
+                    opacity:'1',
+                    width:'50px',
+                    height:'50px',
+                    margin:'20px auto'
+                })
+            },500)
+        })
+    </script>
+</body>
+
+</html>

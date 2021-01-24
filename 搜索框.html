@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 300px;
+            margin: 20px auto;
+            background-color: #fff;
+            box-shadow: 2px 2px 2px 2px #ccc;
+            border: 1px solid #000;
+        }
+
+        #box input {
+            padding: 5px;
+            border: none;
+            width: 96%;
+            height: 25px;
+        }
+
+        #box ul {
+            width: 304px;
+            list-style-type: none;
+        }
+
+        #box ul li {
+            border: 1px solid #ccc;
+            width: 96%;
+            padding: 5px;
+            overflow: hidden;
+        }
+
+        #box ul li span {
+            float: right;
+            margin-right: 10px;
+            display: none;
+            cursor: pointer;
+        }
+
+        #box ul li:hover span {
+            display: block;
+        }
+    </style>
+    <script src="vue.min.js"></script>
+</head>
+<body>
+    <div id="box">
+        <input type="text" v-model="masage" @keyup.enter="serach()">
+        <ul>
+            <li v-for="(item,index) in city">{{item}}<span @click="serachclose(index)">×</span></li>
+        </ul>
+        <li style="border-radius: 5px;list-style-type: none;padding: 5px;" v-show="this.city!=0"><span>item:{{city.length}}</span>
+            <span style="float:right;cursor:pointer" @click="closeAll()">close</span></li>
+    </div>
+    <script>
+        var main = new Vue({
+            el: "#box",
+            data: {
+                masage: "武汉",
+                city: ["上海", "北京", "深圳", "广州"]
+            },
+            methods: {
+                serach: function () {
+                    if (this.masage !== " ") {
+                        this.city.unshift(this.masage);
+                        this.masage = " ";
+                    }
+
+                },
+                serachclose: function (x) {
+                    this.city.splice(x, 1)
+                },
+                closeAll: function (v) {
+                    this.city.splice(0, this.city.length)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

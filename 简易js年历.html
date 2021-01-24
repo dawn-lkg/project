@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0 auto;
+				padding: 0;
+				list-style-type: none;
+				font: 12px/1.5 tahoma;
+			}
+			#calebder{
+					width: 248px;
+					zoom: 1;
+					background: #eaeaea;
+					margin: 10px auto;
+					padding: 0 0 10px 10px;
+			}
+			#calebder ul{
+				overflow: hidden;
+				zoom: 1;
+			}
+			#calebder li{
+				float: left;
+				width: 40px;
+				height: 40px;
+				cursor: pointer;
+				font-size: 14px;
+				text-align: center;
+				background: #424242;
+				line-height: 0.9;
+				border: 1px solid #424242;
+				margin: 10px 10px 0 0;
+				padding: 5px;
+				color: #fff;
+			}
+			#calebder li strong{
+				display: block;
+				font-size: 18px;
+				font-weight: bold;
+			}
+			#calebder li.current{
+				color: #f69;
+				background: #fff;
+			}
+			.box{
+				color: #666;
+				background: #f1f1f1;
+				border: 1px solid #FFFFFF;
+				margin: 10px 10px 0 0;
+				padding: 5px;
+			}
+		</style>
+		<script>
+			window.onload=function(){
+				var calebder=document.getElementsByClassName('calebder')[0].getElementsByTagName('li');
+				var boxh2=document.getElementsByClassName('box')[0].getElementsByTagName('strong')[0];
+				var boxp=document.getElementsByClassName('box')[0].getElementsByTagName('p')[0];
+				console.log(calebder)
+				var arr=[
+						"元旦：1月1日至3日放假三天。",
+		                "春节：2月2日至8日放假7天。",
+		                "妇女节：3月8日妇女节，与我无关。",
+		                "清明节：4月3日至5日放假3天",
+		                "劳动节：4月30日至5月2日放假3天。",
+		                "端午节：6月4日至6日放假3天。",
+		                "小暑：7月7日小暑。不放假。",
+		                "七夕节：8月6日七夕节。不放假。",
+		                "中秋节：9月10日至12日放假3天。",
+		                "国庆节：10月1日至7日放假7天。",
+		                "立冬：11月8日立冬。不放假。",
+		                "艾滋病日:12月1日<br />废除奴隶制国际日:12月2日。"
+				];
+				for(var i=0;i<calebder.length;i++){
+					calebder[i].index=i;
+					calebder[i].onmouseover=function(){
+						for(var j=0;j<calebder.length;j++){
+							calebder[j].className="";
+							boxp.innerHTML=arr[this.index];
+						}
+						this.className="current"
+						boxh2.innerHTML=this.index+1;
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="calebder" class="calebder">
+			<ul>
+				<li class=""><strong>1</strong>JAN</li>
+				<li class=""><strong>2</strong>FER</li>
+				<li class=""><strong>3</strong>MAR</li>
+				<li class=""><strong>4</strong>APR</li>
+				<li class=""><strong>5</strong>MAY</li>
+				<li class=""><strong>6</strong>JUN</li>
+				<li class="current"><strong>7</strong>JUL</li>
+				<li class=""><strong>8</strong>AUG</li>
+				<li class=""><strong>9</strong>SEP</li>
+				<li class=""><strong>10</strong>OCT</li>
+				<li class=""><strong>11</strong>NOV</li>
+				<li class=""><strong>12</strong>DEC</li>
+			</ul>
+			<div class="box">
+				<h2><strong>7</strong>月节日</h2>
+				<p>小暑：7月7日小暑。不放假。</p>
+			</div>
+		</div>
+	</body>
+</html>

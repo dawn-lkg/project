@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>上浮效果</title>
+<style type="text/css">
+div{
+width:800px;
+height:500px;
+margin:200px auto;
+}
+ul{
+list-style-type:none;
+}
+li{
+width:100px;
+height:50px;
+overflow:hidden;
+border:1px solid black;
+float: left;
+margin-right: 20px;
+}
+span{
+width:100px;
+height:50px;
+background:red;
+display:block;
+position: relative;
+transition:.5s;
+}
+</style>
+<script>
+window.onload=function(){
+var aspan=document.getElementsByTagName("span");
+var ali=document.getElementsByTagName("li");
+for(var i=0;i<aspan.length;i++){
+	ali[i].index=i;
+	ali[i].onmouseover=function(){
+		switch(this.index){
+			case 0:aspan[this.index].style.top=0; break;
+			case 1:aspan[this.index].style.left=0; break;
+			case 2:aspan[this.index].style.bottom=0; break;
+			case 3:aspan[this.index].style.right=0; break;
+		}
+	}
+	ali[i].onmouseout=function(){
+		switch(this.index){
+			case 0:aspan[this.index].style.top='50px'; break;
+			case 1:aspan[this.index].style.left='100px'; break;
+			case 2:aspan[this.index].style.bottom='50px'; break;
+			case 3:aspan[this.index].style.right='100px'; break;
+		}
+	}
+}
+}
+</script>
+</head>
+<body>
+<div>
+	<ul>
+		<li><span style="top: 50px;"></span></li>
+		<li><span style="left: 100px;"></span></li>
+		<li><span style="bottom: 50px;"></span></li>
+		<li><span style="right: 100px;"></span></li>
+	</ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" value="点击开始蹦迪"/>
+		<script>
+				function show(a){
+					var body=document.body;
+					body.style.background=arrt[a];
+				};
+				var arrt=['red','green','blue','yellow','orange'];
+				var a=-1;
+				var drag=true;
+				var timer=null;
+				document.getElementsByTagName('input')[0].onclick=function(){
+				if(drag){
+				timer=setInterval(function(){
+					a++;
+					a>=arrt.length&&(a=0);
+					show(a);
+				},100);
+				drag=false;
+				this.value='点击关闭';
+				}else{
+				clearInterval(timer);
+				drag=true;
+				this.value='点击开始蹦迪';
+				}
+				}
+		</script>
+	</body>
+</html>

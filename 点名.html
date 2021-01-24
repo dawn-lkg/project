@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>点名</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 200px;
+            height: 200px;
+            box-shadow:10px 10px 30px rgb(0, 0, 0,.4);
+            border-radius: 20%;
+            margin: 20px auto;
+            display: flex;
+            background-color: royalblue;
+        }
+        #box-1{
+            text-align: center;
+            margin: auto;
+            color: #fff;
+        }
+        h1{
+            letter-spacing: 20;
+            line-height: 50x;
+        }
+    </style>
+    <script src="js/jQuery.js"></script>
+</head>
+
+<body>
+    <div id="box">
+        <div id="box-1">
+        <h1>准备点名</h1>
+        <h2>开始点名</h2></div>
+    </div>
+    <script>
+        var city = ["武汉", "上海", "广州", "深圳","上海","北京"]
+        function doit() {
+            var num = Math.round(Math.random() * (city.length - 1));
+            h1.innerHTML = city[num];
+        }
+        var h1 = document.getElementsByTagName("h1")[0];
+        var h2 = document.getElementsByTagName("h2")[0];
+        var myTimer = null;
+        h2.addEventListener("click", function () {
+            if (myTimer == null) {
+                myTimer = setInterval(doit, 10);
+                this.innerHTML="停止点名";
+            } else {
+                clearInterval(myTimer);
+                myTimer = null;
+                this.innerHTML="开始点名";
+            }
+        })
+    </script>
+</body>
+
+</html>

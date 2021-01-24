@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				margin: 0 auto;
+				padding: 0;
+			}
+			#calr{
+				width: 300px;
+				background: #000000;
+				margin: 10px auto;
+			}
+			#formula{
+				color: #FFf;
+				position: absolute;
+				top: 30px;
+				width: 280px;
+				background: none;
+				padding: 3px 15px 0 5px;
+				border: 0;
+				text-align: right;
+				font-weight: bold;
+			}
+			#calr #c-text{
+				color: #FFFFFF;
+				border: 0;
+				width: 290px;
+				height: 84px;
+				text-align: right;
+				padding: 0 5px;
+				background: none;
+				margin: 20px 0 0 0;
+				font-weight: bold;
+				font-size: 55px;
+			}
+			ul{
+				list-style-type: none;
+				position: relative;
+				overflow: hidden;
+				padding: 0 0 17px 8px;
+			}
+			ul li{
+				float: left;
+				width: 63px;
+				height: 41px;
+				margin: 17px 10px 0 0;
+			}
+			a{
+				text-decoration: none;
+				color: #FFFFFF;
+				display: block;
+				width: 63px;
+				height: 41px;
+				line-height: 41px;
+				text-align: center;
+				background: none;
+				font-size: 24px;
+				font-weight: bold;
+				cursor: pointer;
+			}
+			#calr .obtn-2 a{
+				height: 99px;
+				line-height: 99px;
+			}
+			#calr .obtn-3 a{
+				width: 136px;
+			}
+			#calr .obtn-4 a{
+				margin-left: 73px;
+			}
+		</style>
+		<script>
+			window.onload=function(){
+				var calr=document.getElementById('calr');
+				var Input=calr.getElementsByTagName('input');
+				var aA=calr.getElementsByTagName('a');
+				for(var i=0;i<aA.length;i++){
+					aA[i].onclick=function(){
+						if(Input[1].value==0){
+							Input[1].value=""
+						}
+						Input[1].value+=this.innerHTML 
+					}
+				}
+						aA[15].onclick=function(){
+							Input[1].value=eval(Input[1].value)
+						}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="calr">
+			<input type="text" value="" id="formula"/>
+			<input type="text"  value="0" maxlength="9" id="c-text" readonly="readonly"/>
+			<ul>
+				<li class="obtn"><a href="javascript:;">c</a></li>
+				<li class="obtn"><a href="javascript:;">%</a></li>
+				<li class="obtn"><a href="javascript:;">/</a></li>
+				<li class="obtn"><a href="javascript:;">*</a></li>
+				<li><a href="javascrip:;">7</a></li>
+				<li><a href="javascrip:;">8</a></li>
+				<li><a href="javascrip:;">9</a></li>
+				<li class="obtn"><a href="javascript:;">-</a></li>
+				<li><a href="javascrip:;">4</a></li>
+				<li><a href="javascrip:;">5</a></li>
+				<li><a href="javascrip:;">6</a></li>
+				<li class="obtn"><a href="javascript:;">+</a></li>
+				<li><a href="javascrip:;">1</a></li>
+				<li><a href="javascrip:;">2</a></li>
+				<li><a href="javascrip:;">3</a></li>
+				<li class="obtn-2"><a href="javascript:;">=</a></li>
+				<li class="obtn-3"><a href="javascrip:;">0</a></li>
+				<li class="obtn-4"><a href="javascrip:;">.</a></li>
+			</ul>
+		</div>
+	</body>
+</html>

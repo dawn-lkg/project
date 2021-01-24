@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0 auto;
+				padding: 0;
+			    font: 12px/1.5 tahoma;
+			}
+			#outer{
+				width: 300px;
+				margin: 0 auto;
+			}
+			p{
+				margin-bottom: 10px;
+			}
+			#obtn{
+				margin-left: 63px;
+			}
+			#reset{
+				margin-left: 5px;
+			}
+			#div1{
+				color: #FFFFFF;
+				width: 180px;
+				height: 180px;
+				background: #000000;
+				margin: 0 auto;
+				padding: 10px;
+			}
+		</style>
+		<script>
+			window.onload=function(){
+				var changer=function(odiv,name,value){
+					odiv.style[name]=value;
+				}
+				var obtn=document.getElementById('obtn');
+				var reset=document.getElementById('reset');
+				var Input=document.getElementsByTagName('input');
+				var box=document.getElementById('div1');
+				obtn.onclick=function(){
+					changer(box,Input[0].value,Input[1].value);
+				}
+				reset.onclick=function(){
+					box.removeAttribute('style');
+				}
+			}
+		</script>
+	</head>
+	<body>
+			<div id=outer>
+				<p><label>属性名：</label><input type="text" value="background"/></p>
+				<p><label>属性值：</label><input type="text" value="blue"/></p>
+				<p class="box"><input type="button" value="确定" id="obtn"/><input type="button" value="重置" id="reset"/></p>
+			</div>
+			<div id="div1">在上方输入框输入"属性名"及"属性值"，点击确定按钮查看效果。</div>
+	</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>img/骰子</title>
+    <style type="text/css">
+      .contain {
+        background-repeat: no-repeat;
+        background-image: url(img/骰子/6.jpg);
+        background-size: cover;
+        margin: 10px ;
+        width: 200px;
+        height: 200px;
+        cursor: pointer;
+        display: inline-block;
+      }
+      #box{
+          width: 500px;
+          margin: 10vh auto;
+      }
+    </style>
+    <script type="text/javascript">
+            window.onload = function () {
+              var contain = document.getElementsByClassName("contain");
+              function dice(obj) {
+                this.change = function () {
+                setTimeout(function () {
+                      obj.style.backgroundImage = "url(img/骰子/7.jpg)";
+                    }, 200);
+                    setTimeout(function () {
+                      obj.style.backgroundImage = "url(img/骰子/8.jpg)";
+                    }, 200);
+                    setTimeout(function () {
+                      obj.style.backgroundImage = "url(img/骰子/9.jpg)";
+                    }, 200);
+                    var num = Math.ceil(Math.random() * 6);
+                    setTimeout(function () {
+                    obj.style.backgroundImage = "url(img/骰子/" + num + ".jpg)";
+                  }, 400);
+              }
+              this.change();
+            }
+      
+              document.onclick = function () {
+                let dice_1 = new dice(contain[0]);
+                let dice_2 = new dice(contain[1]);
+                let dice_3 = new dice(contain[2]);
+                let dice_4 = new dice(contain[3]);
+                let dice_5 = new dice(contain[4]);
+                let dice_6 = new dice(contain[5]);
+              };
+            };
+    </script>
+  </head>
+  <body>
+    <div id="box">
+    <div class="contain"></div>
+    <div class="contain"></div>
+    <div class="contain"></div>
+    <div class="contain"></div>
+    <div class="contain"></div>
+    <div class="contain"></div>
+</div>
+  </body>
+</html>

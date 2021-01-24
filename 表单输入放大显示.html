@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div,input{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 160px;
+            margin: 10px auto;
+            text-align: center;
+        }
+        #big{
+            width: 157px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <input type="text" id="big" style="display: none;">
+        <input type="text" id="small">
+    </div>
+    <script>
+        var big=document.getElementById("big");
+        var small=document.getElementById("small");
+        small.addEventListener("keyup",function(){
+            if(this.value==""){
+                big.style.display="none";
+            }else{
+                big.style.display="block";
+                big.value=this.value;
+            }
+        });
+        small.addEventListener("focus",function(){
+            if(this.value!==""){
+                big.style.display="block";
+            }else{
+                big.style.display="none";
+            }
+        })
+        small.addEventListener("blur",function(){
+            big.style.display="none";
+        })
+    </script>
+</body>
+</html>

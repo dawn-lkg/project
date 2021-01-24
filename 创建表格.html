@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            box-shadow: rgb(0, 0, 0,0.4);
+            margin: 0 auto;
+        }
+        table,tr,td{
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        var box=document.createElement('table');
+        document.body.append(box);
+        var data=[];
+        for(var i=0;i<7;i++){
+            data+="<tr>"
+            for(var j=0;j<8;j++){
+                data+="<td>表格</td>"
+            }
+            data+="</tr>"
+        }
+        console.log(data);
+        box.innerHTML=data;
+    </script>
+</body>
+</html>

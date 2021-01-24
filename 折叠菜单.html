@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            text-decoration: none;
+        }
+
+        #box {
+            width: 150px;
+            color: black;
+            margin: 10px;
+        }
+
+        #box ul {
+            width: 100%;
+            border: 1px solid #ccc;
+            margin-bottom: 2px;
+            overflow: hidden;
+            transition: .3s;
+        }
+
+        #box ul a {
+            color: white;
+            font-weight: 600;
+            display: block;
+            padding: 15px;
+            line-height: 20px;
+            background-color: #304ffe;
+        }
+
+        #box ul li ul li {
+            padding: 5px 12px;
+            border: 1px solid #ccc;
+        }
+    </style>
+    <script src="js/jQuery.js"></script>
+    <script>
+        // window.onload = function () {
+        //     var box = document.getElementsByClassName("warp");
+        //     var a = document.getElementsByTagName("a");
+        //     for (var i = 0; i < box.length; i++) {
+        //         a[i].index = i;
+        //         a[i].onclick = function () {
+        //             if (box[this.index].style.height == "0px") {
+        //                 for (var j = 0; j < box.length; j++)box[j].style.height = 0;
+        //                 box[this.index].style.height = '100px'
+        //             } else {
+        //                 box[this.index].style.height = 0;
+        //             }
+        //         }
+        //     }
+        // }
+    </script>
+    <Script>
+        $(document).ready(function () {
+            $("#box ul li a").click(function () {
+                if ($(this).siblings("ul").css("height") == "0px") {
+                    $("#box ul li ul").css("height", "0")
+                    $(this).siblings("ul").css("height", "98px")
+                } else {
+                    $(this).siblings("ul").css("height", "0")
+                }
+
+            })
+        })
+    </Script>
+</head>
+<body>
+    <div id="box">
+        <ul>
+            <li>
+                <a href="javascript:;">信息管理</a>
+                <ul style="height: 0;" class="warp">
+                    <li>未读信息</li>
+                    <li>已读信息</li>
+                    <li>信息列表</li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;">商品管理</a>
+                <ul style="height: 0;" class="warp">
+                    <li>商品信息</li>
+                    <li>商品价格</li>
+                    <li>商品数量</li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;">用户管理</a>
+                <ul style="height: 0;" class="warp">
+                    <li>权限设置</li>
+                    <li>用户列表</li>
+                    <li>重置密码</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>

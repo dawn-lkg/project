@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html>
+	<!--
+    	作者：2360187899@qq.com
+    	时间：2020-08-13
+    -->
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div,ul,li,a,span,h2,h3{
+				margin: 0;
+				padding: 0;
+				text-decoration: none;
+				list-style-type: none;
+			}
+			#course{
+				border: 1px solid #DDDDDD;
+				overflow: hidden;
+				width: 180px;
+				font-size: 14px;
+				font-family: "微软雅黑";
+			}
+			#course h2{
+				padding: 5px 0 5px 15px;
+			}
+			#course a{
+				color: black;
+				font-size: 12px;
+				padding: 5px 0 15px 15px;
+				line-height: 27px;
+				cursor: pointer;
+			}
+			#course ul li.current{
+				background-color: #BD2D30!important;
+			}
+			#course .current a{
+				color: #FFFFFF!important;
+			}
+			#course #hover{
+				background-color: #DDDDDD;
+			}
+			#course #hover a{
+				color: #FFFFFF;
+			}
+			#box{
+				width: 850px;
+				position: absolute;
+				left: 190px;
+				top: 0;
+			}
+			#box .absout{
+				padding: 5px 0 0 25px;
+			}
+			#box .absout h1{
+				font-size: 24px;
+			}
+			#box .absout h2{
+				font-size: 18px;
+			}
+			#box .absout pre{
+				padding: 20px 20px 0 20px;
+				border: 1px dotted #DDDDDD;
+				background-color: #f5f5f5;
+				font-family: arial;
+				line-height: 24px;
+				font-size: 14px;
+			}
+			#box .fun{
+				padding: 15px 0 16px;
+			}
+			#box .fun table{
+				margin: 15px 0 35px 0;
+				border-collapse:collapse ;
+				border: 1px solid #aaa;
+				width: 100%;
+				font-size: 14px;
+			}
+			#box .fun table th{
+				padding: 10px;
+				background-color: #3f3f3f;
+				border:  1px solid #3f3f3f;
+				color: #FFFFFF;
+				text-align: left;
+			}
+			#box .fun table td{
+				padding: 9px;
+				border: 1px solid #AAAAAA;
+			}
+			#box .fun table a{
+				color: #900b09;
+			}
+			#box .absout table a:hover{
+				color: red;
+			}
+			#box .absout  table .dab{
+				background-color: #F5F5F5;
+			}
+		</style>
+		<script src="js/jQuery.js"></script>
+		<script>
+			window.onload=function(){
+				var aLi=document.getElementsByTagName('li');
+				var about=document.getElementsByClassName('absout');
+				for(var i=0;i<aLi.length;i++){
+					aLi[i].index=i;
+					aLi[i].onmouseover=function(){
+						this.id="hover"
+					}
+					aLi[i].onmouseout=function(){
+						for(var j=0;j<aLi.length;j++)aLi[j].id="";
+					}
+					aLi[i].onclick=function(){
+						for(var n=0;n<aLi.length;n++){
+							aLi[n].className="";
+						}
+						for(var k=0;k<about.length;k++){
+							about[k].style.display="none";
+						}
+						this.className="current";
+						about[this.index].style.display="block";
+					}
+				}
+				 $(".datin tr th:even").width("25%");
+			}
+		</script>
+	</head>
+	<body>
+		<div id="course">
+			<h2>JavaScript对象</h2>
+				<ul>
+					<li class="current" id="">
+						<a href="javascript:;">JS Array</a>
+					</li>
+					<li class="">
+						<a href="javascript:;">JS Boolean</a>
+					</li>
+					<li class="">
+						<a href="javascript:;">JS Date</a>
+					</li>
+					<li class="">
+						<a href="javascript:;">JS Math</a>
+					</li>
+					<li class="">
+						<a href="javascript:;">JS Number</a>
+					</li>
+					<li class="">
+						<a href="javascript:;">JS String</a>
+					</li>
+					<li class="">
+						<a href="javascript:;">JS RegExp</a>
+					</li>
+					<li class="">
+						<a href="javascript:;">JS Function</a>
+					</li>
+					<li class="">
+						<a href="javascript:;">JS Events</a>
+					</li>
+				</ul>
+				<h2>Browser对象</h2>
+				<ul>
+					<li><a href="javascript:;">Window</a></li>
+					<li><a href="javascript:;">Navigator</a></li>
+					<li><a href="javascript:;">Screen</a></li>
+					<li><a href="javascript:;">History</a></li>
+					<li><a href="javascript:;">Location</a></li>
+				</ul>
+				<h2>HTML DOM对象</h2>
+				<ul>
+					<li><a href="javascript:;">DOM Document</a></li>
+					<li><a href="javascript:;">DOM Element</a></li>
+					<li><a href="javascript:;">DOM Attribue</a></li>
+					<li><a href="javascript:;">DOM Event</a></li>
+				</ul>
+				<h2>HTML对象</h2>
+				<ul>
+					<li><a href="javascript:;">&lt;a&gt;</a></li>
+					<li><a href="javascript:;">&lt;&gt;</a></li>
+					<li><a href="javascript:;">&lt;&gt;</a></li>
+					<li><a href="javascript:;">&lt;&gt;</a></li>
+					<li><a href="javascript:;">&lt;&gt;</a></li>
+					<li><a href="javascript:;">&lt;&gt;</a></li>
+					<li><a href="javascript:;">&lt;&gt;</a></li>
+					<li><a href="javascript:;">&lt;&gt;</a></li>
+					<li><a href="javascript:;">&lt;&gt;</a></li>
+					<li><a href="javascript:;">&lt;&gt;</a></li>
+					<li><a href="javascript:;">&lt;&gt;</a></li>
+					<li><a href="javascript:;">&lt;&gt;</a></li>
+					<li><a href="javascript:;">&lt;&gt;</a></li>
+					<li><a href="javascript:;">&lt;&gt;</a></li>
+					<li><a href="javascript:;">&lt;&gt;</a></li>
+					<li><a href="javascript:;">&lt;&gt;</a></li>
+					<li><a href="javascript:;">&lt;&gt;</a></li>
+					<li><a href="javascript:;">&lt;&gt;</a></li>
+					<li><a href="javascript:;">&lt;&gt;</a></li>
+					<li><a href="javascript:;">&lt;&gt;</a></li>
+					<li><a href="javascript:;">&lt;&gt;</a></li>
+					<li><a href="javascript:;">&lt;&gt;</a></li>
+					<li><a href="javascript:;">&lt;&gt;</a></li>
+					<li><a href="javascript:;">&lt;&gt;</a></li>
+					<li><a href="javascript:;">&lt;&gt;</a></li>
+					<li><a href="javascript:;">&lt;&gt;</a></li>
+					<li><a href="javascript:;">&lt;&gt;</a></li>
+					<li><a href="javascript:;">&lt;&gt;</a></li>
+					<li><a href="javascript:;">&lt;&gt;</a></li>
+					<li><a href="javascript:;">&lt;&gt;</a></li>
+					<li><a href="javascript:;">&lt;&gt;</a></li>
+					<li><a href="javascript:;">&lt;&gt;</a></li>
+					<li><a href="javascript:;">&lt;&gt;</a></li>
+					<li><a href="javascript:;">&lt;&gt;</a></li>
+					<li><a href="javascript:;">&lt;&gt;</a></li>
+					<li><a href="javascript:;">&lt;&gt;</a></li>
+				</ul>
+		</div>
+		<div id="box">
+			<div class="absout" style="display: none;">
+				<h1>JavaScript Date对象</h1>
+				<div>
+					<h2>Array对象</h2>
+					<p>Array对象用于在单个的变量中存储多个值。</p>
+					<h3>创建Array对象的语法：</h3>
+					<pre>
+new Array();
+new Array(size);
+new Array(<em>element0</em>,<em>element1</em>,...,<em>elementn</em>)
+					</pre>
+					<h3>参数</h3>
+					<p>参数<em>size</em>返回的数组，length字段将被设定为<em>size</em>的值。</p>
+					<p>参数<em>element……,element</em>是参数列表。当使用这些参数来调用构造函数
+						Array()时新创建的数组的元素会被初始化为这些值。它的length字段就会被设置为参数的个数。</p>
+					<h3>返回值</h3>
+					<p>返回新创建并被初始化了的数组。</p>
+					<p>如果调用构造函数 Array() 时没有使用参数，那么返回的数组为空，length 字段为 0。</p>
+					<p>当调用构造参数时只传递给他一个数字参数，该构造函数将返回具有指定个数，元素为undenfind的数组</p>
+					<p>当其他参数调用 Array() 时，该构造函数将用参数指定的值初始化数组。</p>
+					<p>当把构造函数作为函数调用，不使用 new 运算符时，它的行为与使用 new 运算符调用它时的行为完全一样。</p>
+					<hr width="100%" />
+				</div>
+				<div class="fun">
+					<h2>Array对象属性</h2>
+					<table class="datin">
+						<tr>
+							<th>属性</th>
+							<th>描述</th>
+						</tr>
+						<tr>
+							<td><a href="javascript:;">constructor</a></td>
+							<td>返回对创建此对象的数组函数的引用。</td>
+						</tr>
+						<tr class="dab">
+							<td><a href="javascript:;">length</a></td>
+							<td>设置或返回数组中元素的数目。</td>
+						</tr>
+						<tr>
+							<td><a href="javaScript:;">protptype</a></td>
+							<td>使您有能力像对象添加属性和方法。</td>
+						</tr>
+					</table>
+					<hr width="100%" />
+				</div>
+				<div class="fun">
+					<h2>Array对象方法</h2>
+					<table class="datin">
+						<tr>
+							<th>方法</th>
+							<th>描述</th>
+						</tr>
+						<tr class="dab">
+							<td><a href="javascript:;">concat()</a></td>
+							<td>连接两个或更多的数组，并返回结果。</td>
+						</tr>
+						<tr>
+							<td><a href="javascript:;">join()</a></td>
+							<td>把数组的所有元素放入一个字符串。元素通过指定的分隔符进行分割。</td>
+						</tr>
+						<tr class="dab">
+							<td><a href="javascript:;">pop()</a></td>
+							<td>删除并返回数组的最后一个元素</td>
+						</tr>
+						<tr>
+							<td><a href="javascript:;">push()</a></td>
+							<td>向数组的末尾添加一个或更多元素，并返回新的长度。</td>
+						</tr>
+						<tr class="dab">
+							<td><a href="javascript:;">reverse()</a></td>
+							<td>颠倒数组中元素的顺序。</td>
+						</tr>
+						<tr>
+							<td><a href="javascript:;">shift()</a></td>
+							<td>删除并返回数组的第一个元素。</td>
+						</tr>
+						<tr class="dab">
+							<td><a href="javascript:;">slice()</a></td>
+							<td>从某个已有的数组返回选定的元素</td>
+						</tr>
+						<tr>
+							<td><a href="javascript:;">sort()</a></td>
+							<td>对数组元素进行排序</td>
+						</tr>
+						<tr class="dab">
+							<td><a href="javascript:;">splice()</a></td>
+							<td>删除元素，并向数组添加新元素。</td>
+						</tr>
+						<tr>
+							<td><a href="javascript:;">toSource()</a></td>
+							<td>返回该对象源代码。</td>
+						</tr>
+						<tr class="dab">
+							<td><a href="javascript:;">toString()</a></td>
+							<td>把数组转换为字符串，并返回结果。</td>
+						</tr>
+						<tr>
+							<td><a href="javascript:;">toLocaleString()</a></td>
+							<td>把数组转换为本地数组，并返回结果。</td>
+						</tr>
+						<tr class="dab">
+							<td><a href="javascript:;">unshift()</a></td>
+							<td>向数组的开头添加一个或更多元素，并返回新的长度。</td>
+						</tr>
+						<tr>
+							<td><a href="javascript:;">valueOf()</a></td>
+							<td>返回数组对象的原始值</td>
+						</tr>
+					</table>
+					<hr width="100%" />
+				</div>
+			</div>
+			<div class="absout" style="display: none;">
+				<h1>JavaScript Boolean对象</h1>
+				<div>
+					<h1>Boolean 对象</h1>
+					<p>Boolean 对象表示两个值： "true"或"false"。</p>
+					<h3>创建Boolean对象的语法:</h3>
+					<pre>
+new Boolean(<em>value</em>);       <span style="color: #999999; font-size: 16px;font-weight: bold;">//构造函数</span>
+Boolean(<em>value</em>);              <span style="color: #999999; font-size: 16px;font-weight: bold;">//构造函数</span>
+					</pre>
+					<h3>参数</h3>
+					<p>参数<em>value</em>由布尔对象存放的值或者要转换成布尔值的值。</p>
+					<h3>返回值</h3>
+					<p>当作为一个构造函数（带有运算符 new）调用时，Boolean() 将把它的参数
+						转换成一个布尔值，并且返回一个包含该值的 Boolean 对象。</p>
+					<p>如果作为一个函数（不带有运算符 new）调用时，Boolean() 只将把
+						它的参数转换成一个原始的布尔值，并且返回这个值。</p>
+					<p>注释：如果省略 value 参数，或者设置为 0、-0、null、""、false、
+						undefined 或 NaN，则该对象设置为 false。否则设置为 true（即使
+						 value 参数是字符串 "false"）。</p>
+						 <hr width="100%" />
+				</div>
+				<div class="fun">
+					<h2>Boolean对象属性</h2>
+					<table class="datin">
+						<tr>
+							<th>属性</th>
+							<th>描述</th>
+						</tr>
+						<tr>
+							<td><a href="javascript:;">constructor</a></td>
+							<td>返回对创建此对象的Boolean 函数的引用</td>
+						</tr>
+						<tr class="dab">
+							<td><a href="javascript:;">prototypr</a></td>
+							<td>使您有能力向对象添加属性和方法。</td>
+						</tr>
+					</table>
+					<hr width="100%" />
+				</div>
+				<div class="fun">
+					<h2>Boolean对象方法</h2>
+					<table class="datin">
+						<tr>
+							<th>方法</th>
+							<th>描述</th>
+						</tr>
+						<tr>
+							<td><a href="javascript:;">toSource()</a></td>
+							<td>返回该对象的源代码</td>
+						</tr>
+						<tr class="dab">
+							<td><a href="javascript:;">toString()</a></td>
+							<td>把逻辑值转换为字符串，并返回结果。</td>
+						</tr>
+						<tr>
+							<td><a href="javascript:;">valueOf()</a></td>
+							<td>返回Boolean 对象的原始值。</td>
+						</tr>
+					</table>
+					<hr width="100%" />
+				</div>
+				<div>
+					<h2>Boolean 对象描述</h2>
+					<p>在 JavaScript 中，布尔值是一种基本的数据类型。Boolean 
+						对象是一个将布尔值打包的布尔对象。Boolean 对象主要用于
+						提供将布尔值转换成字符串的 toString() 方法。</p>
+					<p>当调用 toString() 方法将布尔值转换成字符串时（通常是由 
+						JavaScript 隐式地调用），JavaScript 会内在地将这个布尔
+						值转换成一个临时的 Boolean 对象，然后调用这个对象的 toString() 方法。</p>
+				</div>
+				<hr width="100%" />
+			</div>
+			<div class="absout">
+				<h1>JavaScript Date 对象</h1>
+				<div>
+					<h2>Data对象</h2>
+					<p>Date 对象用于处理日期和时间。</p>
+					<h3>创建Date对象的语法:</h3>
+					<pre>
+var myDate=new Date()
+					</pre>
+					<p><span>注释:</span>Date 对象会自动把当前日期和时间保存为其初始值。</p>
+				</div>
+				<hr width="100%" />
+				<div class="fun">
+					<h2>Date对象属性</h2>
+					<table class="datin">
+						<tr>
+							<th>属性</th>
+							<th>描述</th>
+						</tr>
+						<tr>
+							<td><a href="javascript:;">constructor</a></td>
+							<td>返回对创建此对象的Date函数的引用。</td>
+						</tr>
+						<tr class="dab">
+							<td><a href="javaScript:;">protype</a></td>
+							<td>使您有能力向对象添加属性和方法。</td>
+						</tr>
+					</table>
+					<hr width="100%" />
+				</div>
+				<div class="fun">
+					<h2>Date对象方法</h2>
+					<table class="datin">
+						<tr>
+							<th>方法</th>
+							<th>描述</th>
+						</tr>
+						<tr>
+							<td><a href="javaScript:;">Date()</a></td>
+							<td>返回当日的日期和时间。</td>
+						</tr>
+						<tr class="dab">
+							<td><a href="javaScript:;">getDate()</a></td>
+							<td>从Date对象返回一个月中的某一天(1~31)。</td>
+						</tr>
+						<tr>
+							<td><a href="javaScript:;">getDay()</a></td>
+							<td>从Date对象返回一周中的某一天(0~6)。</td>
+						</tr>
+						<tr class="dab">
+							<td><a href="javaScript:;">getMonth()</a></td>
+							<td>从Date对象返回月份(0~11)。</td>
+						</tr>
+						<tr>
+							<td><a href="javaScript:;">getFullYear()</a></td>
+							<td>从Date对象以四位数字返回年份。</td>
+						</tr>
+						<tr class="dab">
+							<td><a href="javaScript:;">getYear()</a></td>
+							<td style="color: red;">请使用getFullYear()方法代替。</td>
+						</tr>
+						<tr>
+							<td><a href="javaScript:;">getHours()</a></td>
+							<td>返回Date对象的小时(0~23)。</td>
+						</tr>
+						<tr class="dab">
+							<td><a href="javaScript:;">getMinutes()</a></td>
+							<td>返回Date对象的分钟(0~59)。</td>
+						</tr>
+						<tr>
+							<td><a href="javaScript:;">getSeconds()</a></td>
+							<td>返回Date对象的秒数(0~59)。</td>
+						</tr>
+						<tr class="dab">
+							<td><a href="javaScript:;">getMilliseconds()</a></td>
+							<td>返回Date对象的毫秒(0~999)。</td>
+						</tr>
+						<tr>
+							<td><a href="javaScript:;">getTime()</a></td>
+							<td>返回1970年1月1日至今的毫秒数。</td>
+						</tr>
+						<tr class="dab">
+							<td><a href="javaScript:;">getTimezoneOffset()</a></td>
+							<td>返回本地时间与格林威治标准时间(GMT)的分钟差。</td>
+						</tr>
+						<tr>
+							<td><a href="javaScript:;">getUTCDate()</a></td>
+							<td>根据世界时从Date对象返回月中的一天(1~31)。</td>
+						</tr>
+						<tr class="dab">
+							<td><a href="javaScript:;">getUTCDay()</a></td>
+							<td>根据世界时从 Date 对象返回周中的一天 (0 ~ 6)。</td>
+						</tr>
+						<tr>
+							<td><a href="javaScript:;">getUTCMonth()</a></td>
+							<td>根据世界时从 Date 对象返回月份 (0 ~ 11)。</td>
+						</tr>
+						<tr class="dab">
+							<td><a href="javaScript:;">getUTCFullYear()</a></td>
+							<td>根据世界时从 Date 对象返回四位数的年份。</td>
+						</tr>
+						<tr>
+							<td><a href="javaScript:;">getUTCHours()</a></td>
+							<td>根据世界时返回 Date 对象的小时 (0 ~ 23)。</td>
+						</tr>
+						<tr class="dab">
+							<td><a href="javaScript:;">getUTCMinutes()</a></td>
+							<td>根据世界时返回 Date 对象的分钟 (0 ~ 59)。</td>
+						</tr>
+						<tr>
+							<td><a href="javaScript:;">getUTCSeconds()</a></td>
+							<td>根据世界时返回 Date 对象的秒钟 (0 ~ 59)。</td>
+						</tr>
+						<tr class="dab">
+							<td><a href="javaScript:;">getUTCMilliseconds()</a></td>
+							<td>根据世界时返回 Date 对象的毫秒(0 ~ 999)。</td>
+						</tr>
+						<tr>
+							<td><a href="javaScript:;">parse()</a></td>
+							<td>返回1970年1月1日午夜到指定日期(字符串)的毫秒数。</td>
+						</tr>
+						<tr class="dab">
+							<td><a href="javaScript:;">setDate()</a></td>
+							<td>设置 Date 对象中月的某一天 (1 ~ 31)。</td>
+						</tr>
+						<tr>
+							<td><a href="javaScript:;">setMonth()</a></td>
+							<td>设置 Date 对象中月份 (0 ~ 11)。</td>
+						</tr>
+						<tr class="dab">
+							<td><a href="javaScript:;">setFullYear()</a></td>
+							<td>设置Date对象中的年份(四位数字).</td>
+						</tr>
+						<tr>
+							<td><a href="javaScript:;">setYear()</a></td>
+							<td style="color: red;">请使用setFullYear()方法代替。</td>
+						</tr>
+						<tr class="dab">
+							<td><a href="javaScript:;">setHours()</a></td>
+							<td>设置Date对象中的小时(0~23)。</td>
+						</tr>
+						<tr>
+							<td><a href="javaScript:;">setMinutes()</a></td>
+							<td>设置Date对象中的分钟(0~59)。</td>
+						</tr>
+						<tr class="dab">
+							<td><a href="javaScript:;">setSeconds()</a></td>
+							<td>设置Date对象中的秒数(0~59)。</td>
+						</tr>
+						<tr>
+							<td><a href="javaScript:;">setMilliseconds()</a></td>
+							<td>设置Date对象中的毫秒(0~999)。</td>
+						</tr>
+						<tr class="dab">
+							<td><a href="javaScript:;">setTime()</a></td>
+							<td>以毫秒设置Date对象。</td>
+						</tr>
+						<tr>
+							<td><a href="javaScript:;">setUTCDate()</a></td>
+							<td>根据世界时设置Date对象中月份的一天<(1~31)/td>
+						</tr>
+						<tr class="dab">
+							<td><a href="javaScript:;">setUTCMonth()</a></td>
+							<td>根据世界时设置 Date 对象中的月份 (0 ~ 11)。</td>
+						</tr>
+						<tr>
+							<td><a href="javaScript:;">setUTCFullYear()</a></td>
+							<td>根据世界时设置Date对象中的年份(四位数字)。</td>
+						</tr>
+						<tr class="dab">
+							<td><a href="javaScript:;">setUTCHours()</a></td>
+							<td>根据世界时设置Date对象中的小时(0~23)</td>
+						</tr>
+						<tr>
+							<td><a href="javaScript:;">setUTCMinutes()</a></td>
+							<td>根据世界时设置Date对象中的分钟(0~59)。</td>
+						</tr>
+						<tr class="dab">
+							<td><a href="javaScript:;">setUTCSeconds()</a></td>
+							<td>根据世界时设置Date对象在的秒钟(0~59)。</td>
+						</tr>
+						<tr>
+							<td><a href="javaScript:;">setUTCMilliseconds()</a></td>
+							<td>根据世界时设置对象中的毫秒(0~999)。</td>
+						</tr>
+						<tr class="dab">
+							<td><a href="javaScript:;">toSource</a></td>
+							<td>返回该对象的源代码</td>
+						</tr>
+						<tr>
+							<td><a href="javaScript:;">toString()</a></td>
+							<td>把Date对象转化为字符串。</td>
+						</tr>
+						<tr class="dab">
+							<td><a href="javaScript:;">toDateString()</a></td>
+							<td>把Date对象的日期部分转换为字符串。</td>
+						</tr>
+						<tr>
+							<td><a href="javaScript:;">toGMTString()</a></td>
+							<td style="color: red;">请使用toUTCString()方法代替。</td>
+						</tr>
+						<tr class="dab">
+							<td><a href="javaScript:;">toUTCString()</a></td>
+							<td>根据世界时,把Date对象转换为字符串。</td>
+						</tr>
+						<tr>
+							<td><a href="javaScript:;">toLocaleString()</a></td>
+							<td>根据本地时间格式，把Date对象转换为字符串。</td>
+						</tr>
+						<tr class="dab">
+							<td><a href="javaScript:;">toLocaleTimeString()</a></td>
+							<td>根据本地时间格式，把Date对象的时间部分转换为字符串。</td>
+						</tr>
+						<tr>
+							<td><a href="javaScript:;">toLocaleDateString()</a></td>
+							<td>根据本地时间格式，把Date对象的日期部分转换为字符串。</td>
+						</tr>
+						<tr class="dab">
+							<td><a href="javaScript:;">UTC()</a></td>
+							<td>根据世界返回1970年1月1日到指定日期的毫秒数。</td>
+						</tr>
+						<tr>
+							<td><a href="javaScript:;">valueOf()</a></td>
+							<td>返回Date对象的原始值。</td>
+						</tr>
+						<tr class="dab">
+							<td><a href="javaScript:;"></a></td>
+							<td></td>
+						</tr>
+					</table>
+					<hr width="100%" />
+				</div>
+				</div>
+				<div class="absout" style="display: none;">
+					<h1>JavaScript Math对象</h1>
+					<div>
+						<h2>Math对象</h2>
+						<p style="font-weight: bold;">Math对象用于执行数学任务。</p>
+						<h3>使用Math的属性和方法的语法:</h3>
+						<pre>
+var pi_value=Math.PI;
+var sqrt_value=Math.sqrt(15);
+						</pre>
+						<p style="font-weight: bold;"><span>注释:</span>Math对象并不像Date
+							和String那样是对象的类，因此没有构造
+							函数 Math()，像 Math.sin() 这样的函数
+							只是函数，不是某个对象的方法。您无需创建它，通过把 Math 作为对象使用就可以调用其所有属性和方法。</p>
+					</div>
+					<hr width="100%" />
+					<div class="fun">
+						<h2>Math对象属性</h2>
+						<table class="datin">
+							<tr>
+								<th>属性</th>
+								<th>描述</th>
+							</tr>
+							<tr>
+								<td><a href="javascript:;">E</a></td>
+								<td>返回算术常量e，即自然对数的底数(约等于2.718)。</td>
+							</tr>
+							<tr class="dab">
+								<td><a href="javascript:;">LN2</a></td>
+								<td>返回2的自然对数(约等于0.693)。</td>
+							</tr>
+							<tr>
+								<td><a href="javascript:;">LN10</a></td>
+								<td>返回10的自然对数(约等于2.302)。</td>
+							</tr>
+							<tr class="dab">
+								<td><a href="javascript:;">LOG2E</a></td>
+								<td>返回以2为底的e的对数(约等于1.414)。</td>
+							</tr>
+							<tr>
+								<td><a href="javascript:;">LOG10E</a></td>
+								<td>返回以10为底的e的对数(约等于0.434)。</td>
+							</tr>
+							<tr class="dab">
+								<td><a href="javascript:;">PI</a></td>
+								<td>返回圆周率(约等于3.14159)。</td>
+							</tr>
+							<tr>
+								<td><a href="javascript:;">SQRT1_2</a></td>
+								<td>返回返回2的平方根的倒数(约等于0.707)。</td>
+							</tr>
+							<tr class="dab">
+								<td><a href="javascript:;">SQRT2</a></td>
+								<td>返回2的平方根(约等于1.414)。</td>
+							</tr>
+						</table>
+						<hr width="100%" />
+					</div>
+					<div class="fun">
+						<h2>Math对象方法</h2>
+						<table class="datin">
+							<tr>
+								<th>方法</th>
+								<th>描述</th>
+							</tr>
+							<tr>
+								<td><a href="javascript:;"></a></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><a href="javascript:;"></a></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><a href="javascript:;"></a></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><a href="javascript:;"></a></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><a href="javascript:;"></a></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><a href="javascript:;"></a></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><a href="javascript:;"></a></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><a href="javascript:;"></a></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><a href="javascript:;"></a></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><a href="javascript:;"></a></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><a href="javascript:;"></a></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><a href="javascript:;"></a></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><a href="javascript:;"></a></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><a href="javascript:;"></a></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><a href="javascript:;"></a></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><a href="javascript:;"></a></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><a href="javascript:;"></a></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><a href="javascript:;"></a></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><a href="javascript:;"></a></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><a href="javascript:;"></a></td>
+								<td></td>
+							</tr>
+						</table>
+					</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三级联动</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        select {
+            margin-right: 10px;
+            width: 90px;
+            text-align: center;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <select>
+        </select>
+        <select>
+        </select>
+        <select>
+        </select>
+    </div>
+    <script>
+        //方法，传入数组和节点，动态生成数据添加到标签中
+        function cityArea(arrt, Element) {
+            var content="<option>请选择</option>";
+            for (var i = 0; i < arrt.length; i++) {
+                content += "<option>";
+                content += arrt[i];
+                content += "</option>";
+            }
+            Element.innerHTML = content;
+        }
+        var select = document.getElementsByTagName("select");
+        var attr = ['湖北', '湖南', '河南'];    //省份的数据
+        var city = [['武汉市', '襄阳', '宜昌'], //市数据
+        ['长沙市', '湘潭市', '株洲'],                 
+        ['郑州', '商丘', '洛阳']];
+        var area = [                                                
+            [
+                [['江夏区'], ['洪山区'], ['江汉区']],
+                [['襄城区'], ['樊城区'], ['襄州区']],
+                [['夷陵区'], ['西陵区'], ['伍家岗区']],
+            ],
+            [
+                [['芙蓉区'], ['天心区'], ['开福区']],
+                [['雨湖区'], ['岳塘区'], ['湘潭县']],
+                [['天元区'], ['荷塘区'], ['芦淞区']],
+            ],
+            [
+                [['中原区'], ['二七区'], ['金水区']],
+                [['睢阳区'], ['梁园区'], ['虞城']],
+                [['西工区'], ['洛龙区'], ['老城区']],
+            ]
+        ]                                       //区数据
+        cityArea(attr, select[0]);
+        select[0].onchange = function () {
+            cityArea(city[select[0].selectedIndex-1], select[1]);
+            select[2].innerHTML="";
+            select[1].onchange = function () {
+                cityArea(area[select[0].selectedIndex-1][select[1].selectedIndex-1], select[2]);
+            }
+        }
+    </script>
+</body>
+
+</html>

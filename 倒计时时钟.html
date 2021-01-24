@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				text-align: center;
+			}
+			#box{
+				width: 300px;
+				padding: 20px 0;
+				background: #000000;
+				margin: 10px auto;
+				text-align: center;
+				color: #FBFBFB;
+			}
+			#box span{
+				width: 80px;
+				color: #000000;
+				background-color: #fbfbfb;
+				border: 2px solid #b4b4b4;
+				margin: 0 10px;
+				padding: 0 10px;
+			}
+			#box input{
+				width: 283px;
+				border: 0;
+				height: 50px;
+				cursor: pointer;
+				margin-top: 20px;
+			}
+		</style>
+		<script>
+			window.onload=function(){
+				var box=document.getElementById('box');
+				var timeout=box.getElementsByTagName('span');
+				var obtn=box.getElementsByTagName('input')[0];
+				obtn.onclick=function(){
+					var timer=setInterval(countDown,1000);
+					
+				}
+				function handle (a){
+					return a.toString().replace(/^(\d)$/,"0$1")
+				}
+				function countDown(){
+					var time=timeout[0].innerHTML.replace(/^0/,"")*60+parseInt(timeout[1].innerHTML.replace(/^0/,""));
+					--time;
+					timeout[0].innerHTML=handle(parseInt(time/60));
+					timeout[1].innerHTML=handle(time%=60);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			<span>01</span>分钟<span>05</span>秒
+			<input type="button" value="点击倒计时" />
+		</div>
+	</body>
+</html>

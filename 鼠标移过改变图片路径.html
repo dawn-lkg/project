@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0 auto;
+				padding: 0;
+			}
+			body{
+				background: #000000;
+			}
+			#box{
+				width: 212px;
+				border: 5px solid #fff;
+				overflow: hidden;
+				background: #FFFFFF;
+				border-radius: 5px;
+				margin: 10px auto;
+				padding: 0 0 3px 3px;
+				zoom: 1;
+			}
+			#box li{
+				float: left;
+				width: 50px;
+				height: 50px;
+				list-style-type: none;
+				margin: 3px 3px 0 0;
+				cursor: pointer;
+			}
+			#box #first,#box li #first{
+				width: 156px!important;
+				height: 156px!important;
+			}
+			#box #first img{
+				width: 156px;
+				height: 156px;
+			}
+			
+		</style>
+		<script>
+			window.onload=function(){
+				var box=document.getElementById('box').getElementsByTagName('img');
+				var show=document.getElementById('first').getElementsByTagName('img')[0];
+				for(var i=1;i<box.length;i++){
+					box[i].onmouseover=function(){
+						show.src=this.src
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<ul	id="box">
+			<li id="first"><img src="img/鼠标移过，改变图片路径_files/big_2.jpg"/></li>
+			<li><a href="javascript:;"><img src="img/鼠标移过，改变图片路径_files/small_1.jpg"/></a></li>
+			<li><a href="javascript:;"><img src="img/鼠标移过，改变图片路径_files/small_2.jpg"/></a></li>
+			<li><a href="javascript:;"><img src="img/鼠标移过，改变图片路径_files/small_3.jpg"/></a></li>
+			<li><a href="javascript:;"><img src="img/鼠标移过，改变图片路径_files/small_4.jpg"/></a></li>
+			<li><a href="javascript:;"><img src="img/鼠标移过，改变图片路径_files/small_5.jpg"/></a></li>
+			<li><a href="javascript:;"><img src="img/鼠标移过，改变图片路径_files/small_6.jpg"/></a></li>
+			<li><a href="javascript:;"><img src="img/鼠标移过，改变图片路径_files/small_7.jpg"/></a></li>
+			<li><a href="javascript:;"><img src="img/鼠标移过，改变图片路径_files/small_8.jpg"/></a></li>
+			<li><a href="javascript:;"><img src="img/鼠标移过，改变图片路径_files/small_9.jpg"/></a></li>
+			<li><a href="javascript:;"><img src="img/鼠标移过，改变图片路径_files/small_10.jpg"/></a></li>
+			<li><a href="javascript:;"><img src="img/鼠标移过，改变图片路径_files/small_11.jpg"/></a></li>
+		</ul>
+	</body>
+</html>

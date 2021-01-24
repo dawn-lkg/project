@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body,dl,dt,dd,p{
+				margin: 0 auto;
+				padding: 0;
+			}
+			body{
+				font-family: tahoma;
+				font-size: 12px;
+			}
+			label,input,a{
+				vertical-align: middle;
+			}
+			label{
+				padding: 0 10px 0 5px;
+			}
+			a{
+				color: #09f;
+				text-decoration: none;
+			}
+			a:hover{color: red;}
+			dl{
+				width: 120px;
+				margin: 10px auto;
+				padding: 10px 5px;
+				border: 1px solid #666666;
+				border-radius: 5px;
+				background: #fafafa;
+				box-shadow:10px 10px 20px rgb(0,0,0,0.4);
+			}
+			dt{
+				padding-bottom: 10px;
+				border-bottom: 1px solid #666;
+			}
+			dt label{font-weight: 700;}
+			p{
+				margin-top: 10px;
+			}
+		</style>
+		<script>
+			window.onload=function(){
+				var obtn=document.getElementsByTagName('input');
+				var label=document.getElementsByTagName('label')[0];
+				var yuoi=document.getElementsByTagName('a')[0];
+				obtn[0].onclick=function(){
+					for(var i=1;i<obtn.length;i++){
+						obtn[i].checked=this.checked;
+					}
+					if(this.checked==true){
+						label.innerHTML="全不选";
+					}else{
+						label.innerHTML="全选";
+					}
+				}
+				for(var k=1;k<obtn.length;k++){
+					obtn[k].onclick=function(){
+						for(var n=1;n<obtn.length;n++){
+							if(!obtn[n].checked){
+								obtn[0].checked=false;
+								break;
+								console.log(1)
+							}else{
+								obtn[0].checked=true;
+							}
+						}
+					}
+				}
+				yuoi.onclick=function(){
+					for(var j=1;j<obtn.length;j++){
+						obtn[j].checked=obtn[j].checked==true?false:true;
+					}
+					for(var n=1;n<obtn.length;n++){
+							if(!obtn[n].checked){
+								obtn[0].checked=false;
+								break;
+								console.log(1)
+							}else{
+								obtn[0].checked=true;
+							}
+						}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<dl>
+		<dt>
+			<input type="checkbox" id="checkAll" />
+			<label>全选</label>
+			<a href="javascript:;">反选</a>
+		</dt>
+		<dd>
+			<p>
+			<input type="checkbox" name="item" />
+			<label>选项（一）</label>
+		    </p>
+		</dd>
+		<dd>
+			<p>
+			<input type="checkbox" name="item" />
+			<label>选项（二）</label>
+			</p>
+		</dd>
+		<dd>
+			<p>
+			<input type="checkbox" name="item" />
+			<label>选项（三）</label>
+			</p>
+		</dd>
+		<dd>
+			<p>
+			<input type="checkbox" name="item" />
+			<label>选项（四）</label>
+			</p>
+		</dd>
+		<dd>
+			<p>
+			<input type="checkbox" name="item" />
+			<label>选项（五）</label>
+			</p>
+		</dd>
+		<dd>
+			<p>
+			<input type="checkbox" name="item" />
+			<label>选项（六）</label>
+			</p>
+		</dd>
+		<dd>
+			<p>
+			<input type="checkbox" name="item" />
+			<label>选项（七）</label>
+			</p>
+		</dd>
+		<dd>
+			<p>
+			<input type="checkbox" name="item" />
+			<label>选项（八）</label>
+			</p>
+		</dd>
+		<dd>
+			<p>
+			<input type="checkbox" name="item" />
+			<label>选项（九）</label>
+			</p>
+		</dd>
+		<dd>
+			<p>
+			<input type="checkbox" name="item" />
+			<label>选项（十）</label>
+			</p>
+		</dd>
+		</dl>
+	</body>
+</html>

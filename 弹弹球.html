@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>弹弹球</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 600px;
+            height: 400px;
+            background-color: #000;
+        }
+        .circle{
+            width: 40px;
+            height: 40px;
+            background-color: red;
+            border-radius: 50%;
+            position: absolute;
+            left: 200px;
+        }
+        .circle1{
+            width: 40px;
+            height: 40px;
+            background-color: blue;
+            border-radius: 50%;
+            position: absolute;
+            left: 400px;
+        }
+        .score{
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="circle"></div>
+        <!-- <div class="circle1"></div> -->
+    </div>
+    <div class="score">0</div>
+    <script>
+        let ball=document.querySelector(".circle");
+        let ball1=document.querySelector(".circle1");
+        let score=document.querySelector(".score");
+        ball.className='circle';
+        class jetBall{
+            constructor(obj,x,y){
+                this.x=x;
+                this.y=y;
+                this.obj=obj;
+                setInterval(this.move.bind(this),1);
+                this.score=0;
+            }
+            move(){
+                if(this.obj.offsetTop<=0||this.obj.offsetTop>=360){
+                    this.x=-this.x;
+                    this.score++;
+                }
+                if(this.obj.offsetLeft<=0||this.obj.offsetLeft>=560){
+                    this.y=-this.y;
+                    this.score++;
+                }
+                this.obj.style.top=this.obj.offsetTop+this.x+"px";
+                this.obj.style.left=this.obj.offsetLeft+this.y+"px";
+                score.innerText=this.score;
+            }
+        }
+        new jetBall(ball,-1,-1);
+       // new jetBall(ball1,-1,-1);
+    </script>
+</body>
+</html>

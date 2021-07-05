@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>俄罗斯方块</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        overflow: hidden;
+        height: 100%;
+      }
+      table {
+        border-collapse: collapse;
+        margin: 10px auto;
+        float: left;
+        margin-right: 15px;
+        position: relative;
+          left: 40%;
+      }
+      h2{
+          position: relative;
+          left: 47%;
+      }
+      td {
+        border: 1px solid #000;
+        width: 25px;
+        height: 25px;
+      }
+      .c1 {
+        background-color: red;
+      }
+      .c2 {
+        background-color: blue;
+      }
+      .c3 {
+        background-color: orange;
+      }
+      .c4 {
+        background-color: purple;
+      }
+      .c5 {
+        background-color: skyblue;
+      }
+      .c6 {
+        background-color: tomato;
+      }
+      .c7 {
+        background-color: green;
+      }
+    </style>
+  </head>
+  <body>
+      <h2>分数：<span>0</span></h2>
+    <script src="./js/jQuery.js"></script>
+    <script>
+      let square = {
+        S: [
+          [
+            [0, 1, 1, 0],
+            [1, 1, 0, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0],
+          ],
+          [
+            [0, 1, 0, 0],
+            [0, 1, 1, 0],
+            [0, 0, 1, 0],
+            [0, 0, 0, 0],
+          ],
+        ],
+        Z: [
+          [
+            [2, 2, 0, 0],
+            [0, 2, 2, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0],
+          ],
+          [
+            [0, 0, 2, 0],
+            [0, 2, 2, 0],
+            [0, 2, 0, 0],
+            [0, 0, 0, 0],
+          ],
+        ],
+        J: [
+          [
+            [0, 3, 0, 0],
+            [0, 3, 0, 0],
+            [3, 3, 0, 0],
+            [0, 0, 0, 0],
+          ],
+          [
+            [3, 0, 0, 0],
+            [3, 3, 3, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0],
+          ],
+          [
+            [0, 3, 3, 0],
+            [0, 3, 0, 0],
+            [0, 3, 0, 0],
+            [0, 0, 0, 0],
+          ],
+          [
+            [3, 3, 3, 0],
+            [0, 0, 3, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0],
+          ],
+        ],
+        L: [
+          [
+            [0, 4, 0, 0],
+            [0, 4, 0, 0],
+            [0, 4, 4, 0],
+            [0, 0, 0, 0],
+          ],
+          [
+            [4, 4, 4, 0],
+            [4, 0, 0, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0],
+          ],
+          [
+            [4, 4, 0, 0],
+            [0, 4, 0, 0],
+            [0, 4, 0, 0],
+            [0, 0, 0, 0],
+          ],
+          [
+            [0, 0, 4, 0],
+            [4, 4, 4, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0],
+          ],
+        ],
+        I: [
+          [
+            [0, 5, 0, 0],
+            [0, 5, 0, 0],
+            [0, 5, 0, 0],
+            [0, 5, 0, 0],
+          ],
+          [
+            [5, 5, 5, 5],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0],
+          ],
+        ],
+        O: [
+          [
+            [0, 6, 6, 0],
+            [0, 6, 6, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0],
+          ],
+        ],
+        T: [
+          [
+            [7, 7, 7, 0],
+            [0, 7, 0, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0],
+          ],
+          [
+            [0, 7, 0, 0],
+            [7, 7, 0, 0],
+            [0, 7, 0, 0],
+            [0, 0, 0, 0],
+          ],
+          [
+            [0, 7, 0, 0],
+            [7, 7, 7, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0],
+          ],
+          [
+            [0, 7, 0, 0],
+            [0, 7, 7, 0],
+            [0, 7, 0, 0],
+            [0, 0, 0, 0],
+          ],
+        ],
+      };
+      class Map {
+        constructor(row, col) {
+          this.row = row;
+          this.col = col;
+          this.mapCode = [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
+          ];
+          this.init();
+        }
+        init() {
+          this.createMap();
+        }
+        createMap() {
+          let $table1 = $("<table></table>");
+          $table1.addClass("tab1");
+          for (let i = 0; i < this.row; i++) {
+            let $tr = $("<tr></tr>");
+            for (let j = 0; j < this.col; j++) {
+              let $td = $("<td></td");
+              $td.appendTo($tr);
+            }
+            $tr.appendTo($table1);
+          }
+          let $table2 = $("<table></table>");
+          $table2.addClass("tab2");
+          for (let i = 0; i < 4; i++) {
+            let $tr2 = $("<tr></tr>");
+            for (let j = 0; j < 4; j++) {
+              let $td2 = $("<td></td>");
+              $td2.appendTo($tr2);
+            }
+            $tr2.appendTo($table2);
+          }
+          $($table1).appendTo("body");
+          $($table2).appendTo("body");
+        }
+        randerMapCode() {
+          for (let i = 0; i < this.mapRow; i++) {
+            for (let j = 0; j < this.mapCol; j++) {
+              if (this.mapCode[i][j] != 0) {
+                this.setColor(i, j, this.mapCode[i][j]);
+              }
+            }
+          }
+        }
+      }
+      class block {
+        constructor(square) {
+          this.square=square;
+          let allType = ["S", "T", "O", "L", "J", "I", "Z"];
+          this.type = allType[parseInt(Math.random() * allType.length)];
+          this.allDir = this.square[this.type].length;
+          this.dir = parseInt(Math.random() * this.allDir);
+          this.code=this.square[this.type][this.dir];
+          this.row=0;
+          this.col=4;
+        }
+      }
+      class Game {
+        constructor(row, col,square,Map,block) {
+          this.row = row;
+          this.col = col;
+          this.square=square;
+          this.block=new block(this.square)
+          this.nextBlock=new block(this.square)
+          this.Map = new Map(this.row, this.col);
+          this.score=0;
+          this.speed=20
+          this.init();
+        }
+        init(){
+            this.render();
+            this.start();
+        }
+        start() {
+           this.timer = setInterval(() => {
+               this.bindEvent();
+               this.checkdown();
+               this.checkRemove();
+               this.checkOver();
+               this.clear();
+               this.randerMapCode();
+               this.render();
+               this.setNextColor();
+           },this.speed*10);
+        }
+        setColor(i, j, num) {
+          $(".tab1")
+            .find("tr")
+            .eq(i)
+            .children()
+            .eq(j)
+            .addClass("c" + num);
+        }
+        setNextColor() {
+          for (let i = 0; i < 4; i++) {
+            for (let j = 0; j < 4; j++) {
+              if (this.nextBlock.code[i][j] != 0) {
+                $(".tab2")
+                  .find("tr")
+                  .eq(i)
+                  .children("td")
+                  .eq(j)
+                  .addClass("c" + this.nextBlock.code[i][j]);
+              }
+            }
+          }
+        }
+        render() {
+          for (let i = 0; i < 4; i++) {
+            for (let j = 0; j < 4; j++) {
+              if (this.block.code[i][j] != 0) {
+                this.setColor(
+                  i + this.block.row,
+                  j + this.block.col,
+                  this.block.code[i][j]
+                );
+              }
+            }
+          }
+        }
+        randerMap(){
+            for(let i=0;i<4;i++){
+                for(let j=0;j<4;j++){
+                    if(this.block.code[i][j]!==0){
+                        this.Map.mapCode[this.block.row+i][this.block.col+j]=this.block.code[i][j];
+                    }
+                }
+            }
+        }
+        randerMapCode() {
+          for (let i = 0; i < this.row; i++) {
+            for (let j = 0; j < this.col; j++) {
+              if (this.Map.mapCode[i][j] != 0) {
+                this.setColor(i, j, this.Map.mapCode[i][j]);
+              }
+            }
+          }
+        }
+        checkdown(){
+            if(this.check(this.block.row+1,this.block.col)){
+                this.block.row++;
+            }else{
+                this.randerMap();
+                this.block=this.nextBlock;
+                this.nextBlock=new block(this.square);
+            }
+        }
+        check(row,col){
+            for(let i=0;i<4;i++){
+                for(let j=0;j<4;j++){
+                    if(this.block.code[i][j]!=0&&this.Map.mapCode[i+row][j+col]!=0){
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+        checkBlockEnd(){
+          while(this.check(this.block.row+1,this.block.col)){
+            this.block.row++;
+          }
+        }
+        checkLelf(){
+          if(this.check(this.block.row,this.block.col-1)){
+            this.block.col--;
+          }
+        }
+        checkRight(){
+          if(this.check(this.block.row,this.block.col+1)){
+            this.block.col++;
+          }
+        }
+        checkRot(){
+          let oldDir=this.block.dir;
+          this.block.dir++;
+          if(this.block.dir>this.block.allDir-1){
+            this.block.dir=0;
+          }
+          this.block.code=this.square[this.block.type][this.block.dir];
+          if(!this.check(this.block.row,this.block.col)){
+            this.block.dir=oldDir;
+            this,block.code=this.square[this.type][this.dir];
+          }
+        }
+        checkRemove(){
+          for(let i=0;i<this.row;i++){
+              if(this.Map.mapCode[i].indexOf(0)==-1){
+                this.Map.mapCode.splice(i,1);
+                this.Map.mapCode.unshift([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+                this.score++;
+                $("h2").children("span").text(this.score);
+              }
+          }
+        }
+        checkOver(){
+          for(let i=0;i<this.col;i++){
+            if(this.Map.mapCode[0][i]!=0){
+              clearInterval(this.timer);
+              alert("游戏结束!当前分数为："+this.score);
+              return;
+            }
+          }
+        }
+        clear(){
+            for(let i=0;i<this.row;i++){
+                for(let j=0;j<this.col;j++){
+                    $(".tab1").find("tr").eq(i).children("td").eq(j).removeClass()
+                }
+            }
+            for(let i=0;i<4;i++){
+              for(let j=0;j<4;j++){
+                $(".tab2").find("tr").eq(i).children("td").eq(j).removeClass();
+              }
+            }
+        }
+        bindEvent(){
+          let self=this;
+          document.onkeydown=function(event){
+            if(event.keyCode==39){
+              self.checkRight();
+            }else if(event.keyCode==37){
+              self.checkLelf();
+            }else if(event.keyCode==40){
+              self.checkBlockEnd();
+            }else if(event.keyCode==38){
+              self.checkRot();
+            }
+          }
+        }
+      }
+      new Game(20,12,square,Map,block);
+    </script>
+  </body>
+</html>
